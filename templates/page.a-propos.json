@@ -30,25 +30,25 @@
       "type": "product-grid",
       "blocks": {
         "product_rGzCxW": {
-          "type": "product",
+          "type": "LL-product-grid-item",
           "settings": {
             "product": "cahier-foxlaude"
           }
         },
         "product_yaUGDe": {
-          "type": "product",
+          "type": "LL-product-grid-item",
           "settings": {
             "product": "cahier-foxlaude"
           }
         },
         "product_BifdkW": {
-          "type": "product",
+          "type": "LL-product-grid-item",
           "settings": {
             "product": "cahier-foxlaude"
           }
         },
         "product_fKWCd7": {
-          "type": "product",
+          "type": "LL-product-grid-item",
           "settings": {
             "product": "cahier-foxlaude"
           }

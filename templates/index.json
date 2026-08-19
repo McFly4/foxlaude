@@ -256,7 +256,19 @@
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
-              "blocks": {}
+              "blocks": {
+                "card-gallery": {
+                  "type": "_product-card-gallery",
+                  "settings": { "image_ratio": "portrait" }
+                },
+                "product-title": {
+                  "type": "product-title"
+                },
+                "price": {
+                  "type": "price"
+                }
+              },
+              "block_order": ["card-gallery", "product-title", "price"]
             }
           },
           "block_order": []

@@ -1,0 +1,241 @@
+{% comment %}
+  Section: home banner
+  Description: Bandeau flex qui devient carousel sur mobile/si trop d'éléments
+{% endcomment %}
+
+<section class="features-banner">
+  <div class="features-banner__container">
+    <div class="features-banner__wrapper {% if section.blocks.size > 4 %}swiper features-swiper{% else %}features-flex{% endif %}">
+      <div class="{% if section.blocks.size > 4 %}swiper-wrapper{% else %}features-flex__inner{% endif %}">
+        {% for block in section.blocks %}
+          <div
+            class="{% if section.blocks.size > 4 %}swiper-slide{% endif %} features-banner__item"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.icon != blank %}
+              <div class="features-banner__icon">
+                {{
+                  block.settings.icon
+                  | image_url: width: 48
+                  | image_tag: loading: 'lazy', width: 24, height: 24, alt: block.settings.text
+                }}
+              </div>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <span class="features-banner__text">{{ block.settings.text }}</span>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-banner {
+    background-color: #9bbed9;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .features-banner__container {
+    padding: 19px 0;
+  }
+
+  /* Mode Flex (moins de 5 éléments sur desktop) */
+  .features-flex__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+  }
+
+  .features-banner__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+  }
+
+  .features-banner__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .features-banner__icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  .features-banner__text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.4;
+  }
+
+  /* Mode Swiper (plus de 4 éléments ou mobile) */
+  .features-swiper {
+    width: 100%;
+  }
+
+  .features-swiper .swiper-wrapper {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .features-swiper .swiper-slide {
+    width: auto !important;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Responsive - Force carousel sur mobile */
+  @media screen and (max-width: 989px) {
+    .features-flex__inner {
+      gap: 32px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .features-banner__container {
+      padding: 13px 0;
+    }
+
+    /* Convertir en carousel sur mobile */
+    .features-flex {
+      overflow: hidden;
+    }
+
+    .features-flex__inner {
+      display: flex;
+      gap: 40px;
+      animation: scroll-banner 20s linear infinite;
+      width: max-content;
+      padding: 0;
+    }
+
+    @keyframes scroll-banner {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Dupliquer les items pour un scroll infini sur mobile */
+    .features-flex__inner::after {
+      content: '';
+      display: flex;
+      gap: 40px;
+    }
+
+    .features-banner__item {
+      flex-shrink: 0;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Initialiser Swiper seulement si plus de 4 blocks
+    const featuresSwiper = document.querySelector('.features-swiper');
+
+    if (featuresSwiper) {
+      new Swiper('.features-swiper', {
+        slidesPerView: 'auto',
+        spaceBetween: 64,
+        loop: true,
+        autoplay: {
+          delay: 0,
+          disableOnInteraction: false,
+        },
+        speed: 3000,
+        freeMode: true,
+        freeModeMomentum: false,
+        breakpoints: {
+          320: {
+            spaceBetween: 40,
+            speed: 2500,
+          },
+          750: {
+            spaceBetween: 64,
+            speed: 3000,
+          },
+        },
+      });
+    } else {
+      // Pour le mode flex sur mobile, dupliquer les items pour scroll infini
+      const flexInner = document.querySelector('.features-flex__inner');
+      if (flexInner && window.innerWidth <= 749) {
+        const items = flexInner.innerHTML;
+        flexInner.innerHTML = items + items; // Dupliquer pour scroll infini
+      }
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "home banner",
+  "tag": "section",
+  "class": "section-features-banner",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icône"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Livraison gratuite"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features Banner",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "text": "Livraison gratuite"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "text": "Retours 30 jours"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "text": "Paiement sécurisé"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "text": "Service client 7j/7"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "a-propos": {
+      "type": "a-propos",
+      "settings": {
+        "intro_title": "Le premier cahier-ardoise scannable au monde",
+        "intro_text": "<h4>Une marque avec du sens</h4><p>Nous privilégions des matériaux responsables, une fabrication française pour nos cahiers et des choix pensés pour prolonger la durée de vie de nos produits.</p><p>Parce que chaque feuille que l’on évite d’utiliser, chaque produit que l’on garde plus longtemps et chaque cahier qui accompagne une année entière compte.</p><p>Et parce que l’éducation mérite aussi d’être au cœur du projet, <strong>5 % de nos bénéfices sont reversés à une association qui œuvre pour l’éducation dans les pays en développement. </strong></p>",
+        "intro_title_size": 42,
+        "block1_image": "shopify://shop_images/full_set_foxlaude.png",
+        "block1_title": "Innovation FoxLaude",
+        "block1_text": "<p><strong>Réinventer l’ardoise pour le monde adulte.</strong></p><p>FoxLaude imagine une nouvelle génération de cahiers : <strong>un cahier avec une ardoise intégrée, effaçable et scannable</strong>, pensée pour accompagner les méthodes de travail d’aujourd’hui.</p><p>L’idée est simple : garder le meilleur du papier, sans ses limites.</p><p>Tes cours et tes notes restent sur papier. Tes brouillons, calculs, schémas et idées passent par l’ardoise. Et lorsqu’une création mérite d’être conservée, <strong>tu la scans et tu la retrouves directement dans ton univers numérique.</strong></p><p>Le tout dans un cahier A4 qui fait la taille d'un ordi, fin, élégant et pensé pour être utilisé au quotidien.</p><p>Et c’est là que FoxLaude veut faire la différence : <strong>réinventer l’ardoise pour la rendre désirable, pratique et adaptée aux étudiants et aux adultes.</strong></p>",
+        "block2_image": "shopify://shop_images/ChatGPT_Image_14_aout_2026_02_23_41.png",
+        "block2_title": "Notre histoire",
+        "block2_text": "<p>À l’approche des examens, c’était l’apocalypse. Des feuilles volantes partout, des brouillons au fond du sac, des notes importantes que je ne retrouvais jamais au bon moment. Et plus je travaillais, plus mon sac se remplissait.</p><p>J’avais simplement envie de tout centraliser.</p><p><strong>Un cahier, un ordinateur, et rien de plus.</strong></p><p>C’est comme ça qu’est née l’idée de FoxLaude : réinventer le cahier pour qu’il puisse vraiment suivre notre façon de travailler aujourd’hui.</p><h4>Écrire l’essentiel. Effacer le reste.</h4><p>FoxLaude, c’est d’abord un cahier pensé pour durer toute l’année. Ses pages sont là pour garder ce qui compte : tes cours, tes notes, tes idées.</p><p>Et puis il y a les ardoises.</p><p>Parce que tout ce qu’on écrit n’a pas vocation à être conservé. Un calcul, un brouillon, une idée qui vient de passer par la tête, un schéma, une liste de choses à faire…</p><p><strong>Tu écris. Tu effaces. Tu recommences.</strong></p><p>Et quand quelque chose mérite finalement d’être gardé, l’ardoise devient une surface complémentaire à ton ordinateur : tu la scannes en quelques secondes et ton schéma, ton calcul ou ton dessin rejoint directement tes notes numériques.</p><h4>Une ardoise, mais pas comme celle de l’école.</h4><p>On voulait reprendre quelque chose de très simple et lui donner une vraie place dans la vie des étudiants et des adultes.</p><p>Pas une grosse ardoise encombrante. Pas un feutre qui bave. Pas une surface réservée aux enfants.</p><p><strong>Une ardoise fine, élégante et agréable à utiliser, intégrée directement dans ton cahier.</strong></p><p>Et surtout, un stylo à mine fine qui permet d’écrire avec la précision et le confort d’un stylo classique, sans sacrifier le côté effaçable.</p><h4>Pourquoi FoxLaude ?</h4><p>Le <strong>Fox</strong>, c’est le renard : intelligent, curieux, agile et malin.</p><p><strong>Laude</strong> vient de <em>cum laude</em>, cette distinction qui récompense l’excellence académique.</p><p>Mais pour nous, <em>cum laude</em> ne signifie pas seulement travailler plus.</p><p>C’est <strong>travailler intelligemment, trouver sa propre manière de faire et avancer à sa façon.</strong></p><p>Comme un petit renard qui trouve toujours son propre chemin.</p><p></p>",
+        "banner_subtitle": "FoxLaude, c’est notre façon de te dire trouve la tienne. Et va jusqu’au bout.",
+        "banner_title": "",
+        "banner_text": ""
+      }
+    },
+    "product-grid": {
+      "type": "product-grid",
+      "blocks": {
+        "product_rGzCxW": {
+          "type": "product",
+          "settings": {
+            "product": "cahier-foxlaude"
+          }
+        },
+        "product_yaUGDe": {
+          "type": "product",
+          "settings": {
+            "product": "cahier-foxlaude"
+          }
+        },
+        "product_BifdkW": {
+          "type": "product",
+          "settings": {
+            "product": "cahier-foxlaude"
+          }
+        },
+        "product_fKWCd7": {
+          "type": "product",
+          "settings": {
+            "product": "cahier-foxlaude"
+          }
+        }
+      },
+      "block_order": [
+        "product_rGzCxW",
+        "product_yaUGDe",
+        "product_BifdkW",
+        "product_fKWCd7"
+      ],
+      "settings": {
+        "title": "Les essentiels FoxLaude"
+      }
+    }
+  },
+  "order": [
+    "a-propos",
+    "product-grid"
+  ]
+}

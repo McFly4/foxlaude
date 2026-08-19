@@ -1,0 +1,64 @@
+{% liquid
+  assign product = closest.product
+%}
+
+<div class="ll-product-header" {{ block.shopify_attributes }}>
+  <h1 class="ll-product-header__title">{{ product.title }}</h1>
+  <div class="ll-product-header__price">
+    {% render 'price', product_resource: product, show_sale_price_first: true %}
+  </div>
+</div>
+
+<style>
+  .ll-product-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--gap-md, 16px);
+    width: 100%;
+  }
+
+  .ll-product-header__title {
+    margin: 0;
+    font-size: 23px;
+    font-weight: var(--font-weight-bold, 700);
+    font-weight: 500;
+
+    line-height: 1.15;
+    color: var(--color-primary, #18466d);
+  }
+
+  .ll-product-header__price {
+    flex-shrink: 0;
+    font-size: 18px;
+    font-weight: var(--font-weight-semibold, 600);
+    white-space: nowrap;
+    padding-top: 4px;
+  }
+
+  .ll-product-header__price .compare-at-price {
+    color: rgb(var(--color-foreground-rgb) / 0.5);
+    text-decoration: line-through;
+    font-weight: normal;
+    margin-inline-end: 8px;
+    margin-left: 10px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "LL En-tête produit",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Titre produit natif + prix (avec réduction si compare_at_price)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LL En-tête produit"
+    }
+  ]
+}
+{% endschema %}

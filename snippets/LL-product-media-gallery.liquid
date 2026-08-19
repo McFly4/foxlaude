@@ -1,0 +1,416 @@
+{% comment %}
+  Product Media Gallery
+{% endcomment %}
+
+<div class="product-media-gallery">
+  {%- if product.media.size > 0 -%}
+    {%- comment -%} Image principale {%- endcomment -%}
+    <div class="main-image-wrapper">
+      <div class="main-image" id="main-image">
+        {%- assign first_media = product.media[0] -%}
+        {%- case first_media.media_type -%}
+          {%- when 'image' -%}
+            <img
+              src="{{ first_media | image_url: width: 1200 }}"
+              srcset="
+                {{ first_media | image_url: width: 600 }} 600w,
+                {{ first_media | image_url: width: 900 }} 900w,
+                {{ first_media | image_url: width: 1200 }} 1200w
+              "
+              sizes="(min-width: 990px) 55vw, 100vw"
+              alt="{{ first_media.alt | escape }}"
+              loading="eager"
+              width="{{ first_media.width }}"
+              height="{{ first_media.height }}"
+            >
+          {%- when 'video', 'external_video' -%}
+            <div class="media-video">
+              {{ first_media | media_tag: image_size: '1200x' }}
+            </div>
+        {%- endcase -%}
+      </div>
+
+      {%- comment -%} Thumbnails Desktop {%- endcomment -%}
+      {%- if product.media.size > 1 -%}
+        <div class="thumbnails-wrapper">
+          {%- for media in product.media -%}
+            <button
+              class="thumbnail-item{% if forloop.first %} active{% endif %}"
+              data-media-index="{{ forloop.index0 }}"
+              onclick="changeMainImage({{ forloop.index0 }})"
+            >
+              {%- if media.media_type == 'image' -%}
+                <img
+                  src="{{ media | image_url: width: 200 }}"
+                  alt="{{ media.alt | escape }}"
+                  loading="lazy"
+                >
+              {%- else -%}
+                <img
+                  src="{{ media.preview_image | image_url: width: 200 }}"
+                  alt="{{ media.alt | escape }}"
+                  loading="lazy"
+                >
+                <div class="thumbnail-play-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              {%- endif -%}
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Carousel Mobile {%- endcomment -%}
+    <div class="mobile-carousel">
+      <div class="carousel-track" id="carousel-track">
+        {%- for media in product.media -%}
+          <div class="carousel-slide">
+            {%- case media.media_type -%}
+              {%- when 'image' -%}
+                <img
+                  src="{{ media | image_url: width: 800 }}"
+                  alt="{{ media.alt | escape }}"
+                  loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                >
+              {%- when 'video', 'external_video' -%}
+                <div class="media-video">
+                  {{ media | media_tag: image_size: '800x' }}
+                </div>
+            {%- endcase -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- if product.media.size > 1 -%}
+        <div class="carousel-dots">
+          {%- for media in product.media -%}
+            <button
+              class="carousel-dot{% if forloop.first %} active{% endif %}"
+              onclick="goToSlide({{ forloop.index0 }})"
+              aria-label="Slide {{ forloop.index }}"
+            ></button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  {%- else -%}
+    <div class="media-placeholder">
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  {%- endif -%}
+</div>
+
+<style>
+  .product-media-gallery {
+    width: 100%;
+  }
+
+  /* Desktop - Image principale */
+  .main-image-wrapper {
+    position: relative;
+    display: block;
+  }
+
+  .main-image {
+    width: 100%;
+    height: 700px;
+    background-color: #f5f5f5;
+    border-radius: 0 24px 24px 0;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 50px !important;
+  }
+
+  .main-image img,
+  .main-image .media-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Thumbnails Desktop */
+  .thumbnails-wrapper {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 2;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #18466d transparent;
+    padding-right: 13px;
+  }
+
+  .thumbnails-wrapper::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  .thumbnails-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .thumbnails-wrapper::-webkit-scrollbar-thumb {
+    background-color: #18466d;
+  }
+
+  .thumbnail-item {
+    width: 95px;
+    height: 144px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    background-color: #fff;
+    padding: 0;
+    position: relative;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .thumbnail-item:hover {
+    border-color: #18466d;
+  }
+
+  .thumbnail-item.active {
+    border-color: #18466d;
+    box-shadow: 0 4px 12px rgba(24, 70, 109, 0.4);
+  }
+
+  .thumbnail-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .thumbnail-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .thumbnail-play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  /* Mobile Carousel */
+  .mobile-carousel {
+    display: none;
+    position: relative;
+    width: 100%;
+  }
+
+  .carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #f5f5f5;
+    position: relative;
+  }
+
+  .carousel-slide img,
+  .carousel-slide .media-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .carousel-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    background: #fff;
+  }
+
+  .carousel-dot.active {
+    background-color: #9cb8aa;
+    width: 11px;
+  }
+
+  /* Placeholder */
+  .media-placeholder {
+    width: 100%;
+    height: 820px;
+    background-color: #f5f5f5;
+    border-radius: 0 24px 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .placeholder-svg {
+    width: 80px;
+    height: 80px;
+    opacity: 0.3;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 989px) {
+    .main-image-wrapper {
+      display: none;
+    }
+
+    .mobile-carousel {
+      display: block;
+    }
+
+    .main-image {
+      height: 600px;
+    }
+
+    .media-placeholder {
+      height: 600px;
+      border-radius: 0;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .main-image {
+      height: 400px;
+    }
+
+    .carousel-slide {
+      aspect-ratio: 4/5;
+    }
+  }
+</style>
+
+<script>
+  // Stocker toutes les images
+  const mediaData = [
+    {%- for media in product.media -%}
+    {
+      type: '{{ media.media_type }}',
+      {%- if media.media_type == 'image' -%}
+      html: `<img src="{{ media | image_url: width: 1200 }}"
+                      srcset="{{ media | image_url: width: 600 }} 600w,
+                              {{ media | image_url: width: 900 }} 900w,
+                              {{ media | image_url: width: 1200 }} 1200w"
+                      sizes="(min-width: 990px) 55vw, 100vw"
+                      alt="{{ media.alt | escape }}"
+                      loading="lazy">`
+      {%- else -%}
+      html: `<div class="media-video">{{ media | media_tag: image_size: "1200x" }}</div>`
+      {%- endif -%}
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ];
+
+  // Changer l'image principale (Desktop)
+  function changeMainImage(index) {
+    const mainImage = document.getElementById('main-image');
+    const thumbnails = document.querySelectorAll('.thumbnail-item');
+
+    if (mainImage && mediaData[index]) {
+      mainImage.innerHTML = mediaData[index].html;
+
+      // Mettre à jour l'état actif des thumbnails
+      thumbnails.forEach((thumb, i) => {
+        if (i === index) {
+          thumb.classList.add('active');
+        } else {
+          thumb.classList.remove('active');
+        }
+      });
+    }
+  }
+
+  // Carousel mobile
+  function goToSlide(index) {
+    const carouselTrack = document.getElementById('carousel-track');
+    const dots = document.querySelectorAll('.carousel-dot');
+
+    if (carouselTrack) {
+      const slideWidth = carouselTrack.offsetWidth;
+      carouselTrack.scrollTo({
+        left: slideWidth * index,
+        behavior: 'smooth'
+      });
+
+      // Mettre à jour les dots
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+  }
+
+  // Détection du scroll pour mettre à jour les dots
+  if (window.innerWidth <= 989) {
+    const carouselTrack = document.getElementById('carousel-track');
+    const dots = document.querySelectorAll('.carousel-dot');
+
+    if (carouselTrack && dots.length > 0) {
+      let scrollTimeout;
+      carouselTrack.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          const slideWidth = carouselTrack.offsetWidth;
+          const currentIndex = Math.round(carouselTrack.scrollLeft / slideWidth);
+
+          dots.forEach((dot, i) => {
+            if (i === currentIndex) {
+              dot.classList.add('active');
+            } else {
+              dot.classList.remove('active');
+            }
+          });
+        }, 100);
+      });
+    }
+  }
+</script>

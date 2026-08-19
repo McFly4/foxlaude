@@ -1,0 +1,24 @@
+{% liquid
+  assign product = block.settings.product
+%}
+
+<div class="resource-list__item" {{ block.shopify_attributes }}>
+  {% if product != blank %}
+    {% content_for 'block', type: '_product-card', id: 'static-product-card', closest.product: product %}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Produit (grille)",
+  "tag": null,
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Sélectionner un produit"
+    }
+  ],
+  "presets": []
+}
+{% endschema %}

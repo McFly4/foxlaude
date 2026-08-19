@@ -1,0 +1,210 @@
+<style>
+  .home-explain {
+    width: 100%;
+  }
+
+  .home-explain__container {
+    display: flex;
+    min-height: 750px;
+    width: 100%;
+  }
+
+  .home-explain__image,
+  .home-explain__content {
+    width: 50%;
+    min-height: 750px;
+  }
+
+  .home-explain__image {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home-explain__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .home-explain__image--placeholder {
+    background-color: #f3f3f3;
+  }
+
+  .home-explain__image--placeholder svg {
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    opacity: 0.3;
+  }
+
+  .home-explain__content {
+    background-color: #9bbed9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home-explain__text-wrapper {
+    padding: 120px;
+    width: 100%;
+    color: #18466d;
+  }
+
+  .home-explain__title {
+    text-align: justify;
+    margin: 0 0 1.5rem 0;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #18466d;
+    font-style: italic;
+  }
+
+  .home-explain__richtext {
+    font-size: 20px;
+    color: #18466d;
+  }
+
+  .home-explain__richtext p {
+    text-align: justify;
+    margin: 0 0 1rem 0;
+    color: #18466d;
+  }
+
+  .home-explain__richtext p:last-child {
+    margin-bottom: 0;
+  }
+
+  .home-explain__richtext h1,
+  .home-explain__richtext h2,
+  .home-explain__richtext h3,
+  .home-explain__richtext h4,
+  .home-explain__richtext h5,
+  .home-explain__richtext h6 {
+    color: #18466d;
+    margin-bottom: 1rem;
+  }
+
+  .home-explain__richtext ul,
+  .home-explain__richtext ol {
+    margin: 0 0 1rem 1.5rem;
+    color: #18466d;
+  }
+
+  .home-explain__richtext a {
+    color: #18466d;
+    text-decoration: underline;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 989px) {
+    .home-explain__container {
+      flex-direction: column-reverse;
+      min-height: auto;
+    }
+
+    .home-explain__image,
+    .home-explain__content {
+      width: 100%;
+      min-height: auto;
+    }
+
+    .home-explain__image {
+      min-height: 400px;
+    }
+
+    .home-explain__text-wrapper {
+      padding: 60px 40px;
+    }
+
+    .home-explain__title {
+      font-size: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .home-explain__image {
+      min-height: 470px;
+      height: 470px;
+    }
+
+    .home-explain__text-wrapper {
+      padding: 40px 20px;
+    }
+
+    .home-explain__title {
+      font-size: 20px;
+    }
+
+    .home-explain__richtext {
+      font-size: 18px;
+    }
+  }
+</style>
+
+<div class="home-explain">
+  <div class="home-explain__container">
+    {% if section.settings.image != blank %}
+      <div class="home-explain__image">
+        {{
+          section.settings.image
+          | image_url: width: 1500
+          | image_tag: loading: 'lazy', widths: '375, 550, 750, 1100, 1500', alt: section.settings.image.alt
+          | escape
+        }}
+      </div>
+    {% else %}
+      <div class="home-explain__image home-explain__image--placeholder">
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {% endif %}
+
+    <div class="home-explain__content">
+      <div class="home-explain__text-wrapper">
+        {% if section.settings.title != blank %}
+          <h2 class="home-explain__title">{{ section.settings.title }}</h2>
+        {% endif %}
+
+        {% if section.settings.text != blank %}
+          <div class="home-explain__richtext">
+            {{ section.settings.text }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Home Explain",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Notre histoire"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texte",
+      "default": "<p>Ajoutez votre contenu ici pour expliquer votre marque, vos valeurs ou votre histoire.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Explain"
+    }
+  ]
+}
+{% endschema %}

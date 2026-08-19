@@ -1,0 +1,511 @@
+{% comment %}
+  Section: About Us
+  Description: Section à propos avec alternance image/texte et bandeau final
+{% endcomment %}
+
+<section class="about-section">
+  <div class="about-container">
+    {%- comment -%} Intro — titre grand gauche + texte droite {%- endcomment -%}
+    {% if section.settings.intro_title != blank or section.settings.intro_text != blank %}
+      <div class="about-intro">
+        <div class="about-intro__left">
+          {% if section.settings.intro_title != blank %}
+            <h2 class="about-intro__title">{{ section.settings.intro_title }}</h2>
+          {% endif %}
+        </div>
+        <div class="about-intro__right">
+          {% if section.settings.intro_text != blank %}
+            <div class="about-intro__text">{{ section.settings.intro_text }}</div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {%- comment -%} Premier bloc - Image gauche, Texte droite {%- endcomment -%}
+    {% if section.settings.block1_image != blank
+      or section.settings.block1_title != blank
+      or section.settings.block1_text != blank
+    %}
+      <div class="about-block about-block--image-left">
+        <div class="about-block__image">
+          {% if section.settings.block1_image != blank %}
+            {{
+              section.settings.block1_image
+              | image_url: width: 800
+              | image_tag:
+                loading: 'lazy',
+                widths: '375, 550, 750, 800',
+                sizes: '(min-width: 750px) 50vw, 100vw',
+                alt: section.settings.block1_image.alt
+              | escape
+            }}
+          {% else %}
+            <div class="about-block__placeholder">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="about-block__content">
+          {% if section.settings.block1_title != blank %}
+            <h2 class="about-block__title">{{ section.settings.block1_title }}</h2>
+          {% endif %}
+
+          {% if section.settings.block1_text != blank %}
+            <div class="about-block__text">{{ section.settings.block1_text }}</div>
+          {% endif %}
+        </div>
+        <div id="concept"></div>
+      </div>
+    {% endif %}
+
+    {%- comment -%} Deuxième bloc - Texte gauche, Image droite {%- endcomment -%}
+    {% if section.settings.block2_image != blank
+      or section.settings.block2_title != blank
+      or section.settings.block2_text != blank
+    %}
+      <div class="about-block about-block--image-right">
+        <div class="about-block__content">
+          {% if section.settings.block2_title != blank %}
+            <h2 class="about-block__title">{{ section.settings.block2_title }}</h2>
+          {% endif %}
+
+          {% if section.settings.block2_text != blank %}
+            <div class="about-block__text">{{ section.settings.block2_text }}</div>
+          {% endif %}
+        </div>
+
+        <div class="about-block__image">
+          {% if section.settings.block2_image != blank %}
+            {{
+              section.settings.block2_image
+              | image_url: width: 800
+              | image_tag:
+                loading: 'lazy',
+                widths: '375, 550, 750, 800',
+                sizes: '(min-width: 750px) 50vw, 100vw',
+                alt: section.settings.block2_image.alt
+              | escape
+            }}
+          {% else %}
+            <div class="about-block__placeholder">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+        </div>
+        <div id="engagement"></div>
+      </div>
+    {% endif %}
+
+    {%- comment -%} Bandeau full width {%- endcomment -%}
+    {% if section.settings.banner_subtitle != blank
+      or section.settings.banner_title != blank
+      or section.settings.banner_text != blank
+    %}
+      <div class="about-banner">
+        <div class="about-banner__content">
+          {% if section.settings.banner_subtitle != blank %}
+            <p class="about-banner__subtitle">{{ section.settings.banner_subtitle }}</p>
+          {% endif %}
+
+          {% if section.settings.banner_title != blank %}
+            <h2 class="about-banner__title">{{ section.settings.banner_title }}</h2>
+          {% endif %}
+
+          {% if section.settings.banner_text != blank %}
+            <div class="about-banner__text">{{ section.settings.banner_text }}</div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .about-section {
+    width: 100%;
+    padding: 80px 0px;
+  }
+
+  /* Intro block */
+  .about-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    padding: 0 40px 100px;
+  }
+
+  .about-intro__title {
+    font-size: {{ section.settings.intro_title_size }}px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    margin: 0;
+    color: #111;
+  }
+
+  .about-intro__text {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #444;
+    padding-top: 6px;
+  }
+
+  .about-intro__text p {
+    margin: 0 0 18px 0;
+  }
+
+  .about-intro__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .about-intro {
+      gap: 40px;
+      padding: 0 20px 70px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .about-intro {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 0 20px 50px;
+    }
+
+    .about-intro__title {
+      font-size: 28px;
+    }
+
+    .about-intro__text {
+      font-size: 14px;
+    }
+  }
+
+  .about-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Blocs alternés */
+  .about-block {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  .about-block:last-of-type {
+    margin-bottom: 100px;
+  }
+
+  .about-block__image {
+    flex: 1;
+    max-height: 700px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .about-block__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: 400px;
+  }
+
+  .about-block__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+  }
+
+  .about-block__placeholder svg {
+    width: 100%;
+    height: 100%;
+    max-width: 150px;
+    opacity: 0.3;
+  }
+
+  .about-block__content {
+    margin-right: 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .about-block--image-right .about-block__content {
+    margin-left: 40px;
+  }
+
+  .about-block__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .about-block__text {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .about-block__text p {
+    margin: 0 0 16px 0;
+  }
+
+  .about-block__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Bandeau full width */
+  .about-banner {
+    width: 100%;
+    background-color: #f5f0ea;
+    padding: 80px 60px;
+    border-radius: 8px;
+  }
+
+  .about-banner__content {
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .about-banner__subtitle {
+    color: #18466d;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .about-banner__title {
+    margin: 0;
+    color: #18466d;
+    font-size: 32px;
+    font-weight: 500;
+  }
+
+  .about-banner__text {
+    color: #18466d;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .about-banner__text p {
+    margin: 0 0 16px 0;
+  }
+
+  .about-banner__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Responsive Tablet */
+  @media screen and (max-width: 989px) {
+    .about-section {
+      padding: 60px 20px;
+    }
+
+    .about-block {
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .about-block__content {
+      margin-right: 0;
+      padding: 0 13px;
+    }
+
+    .about-block--image-right .about-block__content {
+      margin-left: 0px;
+    }
+
+    .about-block:last-of-type {
+      margin-bottom: 80px;
+    }
+
+    .about-block__title {
+      font-size: 24px;
+    }
+
+    .about-banner {
+      padding: 60px 13px;
+    }
+
+    .about-banner__title {
+      font-size: 36px;
+    }
+  }
+
+  /* Responsive Mobile */
+  @media screen and (max-width: 749px) {
+    .about-section {
+      padding: 40px 0px;
+    }
+
+    .about-block__content {
+      gap: 12px;
+    }
+
+    .about-block {
+      flex-direction: column;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .about-block:last-of-type {
+      margin-bottom: 60px;
+    }
+
+    /* Inverser l'ordre visuel pour mobile */
+    .about-block--image-right {
+      flex-direction: column-reverse;
+    }
+
+    .about-block__image img {
+      min-height: 300px;
+    }
+
+    .about-block__placeholder {
+      min-height: 300px;
+    }
+
+    .about-block__title {
+      font-size: 24px;
+    }
+
+    .about-block__text {
+      font-size: 15px;
+    }
+
+    .about-banner {
+      padding: 50px 13px;
+    }
+
+    .about-banner__subtitle {
+      font-size: 16px;
+    }
+
+    .about-banner__title {
+      font-size: 24px;
+    }
+
+    .about-banner__text {
+      font-size: 16px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About Section",
+  "tag": "section",
+  "class": "section-about",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Intro — titre + texte"
+    },
+    {
+      "type": "text",
+      "id": "intro_title",
+      "label": "Grand titre",
+      "default": "Une aventure faite de coups de cœur et de rencontres"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Texte",
+      "default": "<p>Découvrez notre histoire et les valeurs qui nous animent au quotidien.</p>"
+    },
+    {
+      "type": "range",
+      "id": "intro_title_size",
+      "label": "Taille du titre",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 42
+    },
+    {
+      "type": "header",
+      "content": "Premier bloc - Image gauche"
+    },
+    {
+      "type": "image_picker",
+      "id": "block1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "block1_title",
+      "label": "Titre",
+      "default": "Notre histoire"
+    },
+    {
+      "type": "richtext",
+      "id": "block1_text",
+      "label": "Texte",
+      "default": "<p>Découvrez notre histoire et nos valeurs qui font de nous ce que nous sommes aujourd'hui.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Deuxième bloc - Image droite"
+    },
+    {
+      "type": "image_picker",
+      "id": "block2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "block2_title",
+      "label": "Titre",
+      "default": "Notre mission"
+    },
+    {
+      "type": "richtext",
+      "id": "block2_text",
+      "label": "Texte",
+      "default": "<p>Notre mission est de vous offrir les meilleurs produits avec un service exceptionnel.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Bandeau final"
+    },
+    {
+      "type": "text",
+      "id": "banner_subtitle",
+      "label": "Sous-titre",
+      "default": "Rejoignez-nous"
+    },
+    {
+      "type": "text",
+      "id": "banner_title",
+      "label": "Titre",
+      "default": "Ensemble, créons l'avenir"
+    },
+    {
+      "type": "richtext",
+      "id": "banner_text",
+      "label": "Texte",
+      "default": "<p>Découvrez comment nous pouvons travailler ensemble pour atteindre vos objectifs.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Section"
+    }
+  ]
+}
+{% endschema %}

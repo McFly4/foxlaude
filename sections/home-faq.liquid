@@ -1,0 +1,327 @@
+<style>
+  .home-faq {
+    width: 100%;
+    padding: 80px 20px;
+  }
+
+  .home-faq__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .home-faq__image {
+    width: 50%;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .home-faq__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .home-faq__image--placeholder {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home-faq__image--placeholder svg {
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    opacity: 0.3;
+  }
+
+  .home-faq__content {
+    width: 50%;
+  }
+
+  .home-faq__title {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 40px 0;
+    line-height: 1.2;
+  }
+
+  .home-faq__accordion {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-faq__item {
+    border-bottom: 1px solid #011b35;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .home-faq__item:last-child {
+    border-bottom: none;
+  }
+
+  .home-faq__question {
+    background: white !important;
+    width: 100%;
+    padding: 20px 0;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #011b35;
+    transition: all 0.3s ease;
+  }
+
+  .home-faq__question:hover {
+    color: #0f2d4a;
+  }
+
+  .home-faq__icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 15px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .home-faq__icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: #011b35;
+    stroke-width: 2;
+  }
+
+  .home-faq__item.active .home-faq__icon {
+    transform: rotate(180deg);
+  }
+
+  .home-faq__answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    opacity: 0;
+    padding-left: 10px;
+    transition:
+      grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s ease;
+  }
+
+  .home-faq__item.active .home-faq__answer {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .home-faq__answer-content {
+    overflow: hidden;
+    min-height: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+  }
+
+  .home-faq__answer-content > *:first-child {
+    margin-block-start: 15px;
+  }
+
+  .home-faq__answer-content > *:last-child {
+    margin-block-end: 20px;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 989px) {
+    .home-faq {
+      padding: 60px 20px;
+    }
+
+    .home-faq__container {
+      flex-direction: column-reverse;
+      gap: 40px;
+    }
+
+    .home-faq__image,
+    .home-faq__content {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .home-faq__image {
+      max-height: 400px;
+    }
+
+    .home-faq__title {
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .home-faq {
+      margin-top: 50px;
+      padding: 40px 0;
+    }
+
+    .home-faq__content {
+      padding: 0 13px;
+    }
+
+    .home-faq__title {
+      font-size: 24px;
+    }
+
+    .home-faq__question {
+      font-size: 16px;
+      padding: 15px 0;
+    }
+
+    .home-faq__image {
+      border-radius: 0;
+    }
+
+    .home-faq__answer-content {
+      font-size: 15px;
+    }
+
+    .home-faq__item.active .home-faq__answer {
+      padding: 10px 0 15px 0;
+    }
+  }
+</style>
+
+<div class="home-faq">
+  <div class="home-faq__container">
+    <div class="home-faq__image">
+      {% if section.settings.image != blank %}
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag: loading: 'lazy', widths: '375, 550, 750, 1100, 1200', alt: section.settings.image.alt
+          | escape
+        }}
+      {% else %}
+        <div class="home-faq__image--placeholder">
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="home-faq__content">
+      {% if section.settings.title != blank %}
+        <h2 class="home-faq__title">{{ section.settings.title }}</h2>
+      {% endif %}
+
+      <div class="home-faq__accordion">
+        {% for block in section.blocks %}
+          <div class="home-faq__item" {{ block.shopify_attributes }}>
+            <button class="home-faq__question" type="button">
+              <span>{{ block.settings.question }}</span>
+              <span class="home-faq__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </button>
+            <div class="home-faq__answer">
+              <div class="home-faq__answer-content">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const faqItems = document.querySelectorAll('.home-faq__item');
+
+    faqItems.forEach((item) => {
+      const question = item.querySelector('.home-faq__question');
+
+      question.addEventListener('click', function () {
+        const isActive = item.classList.contains('active');
+
+        // Fermer tous les items
+        faqItems.forEach((otherItem) => {
+          otherItem.classList.remove('active');
+        });
+
+        // Ouvrir l'item cliqué si il n'était pas actif
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Home FAQ",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Questions fréquentes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Question/Réponse",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Quelle est votre question ?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Réponse",
+          "default": "<p>Voici la réponse à votre question.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home FAQ",
+      "blocks": [
+        {
+          "type": "faq_item"
+        },
+        {
+          "type": "faq_item"
+        },
+        {
+          "type": "faq_item"
+        },
+        {
+          "type": "faq_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

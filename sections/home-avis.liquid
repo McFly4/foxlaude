@@ -1,0 +1,565 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<style>
+  .home-avis {
+    width: 100%;
+    padding: 80px 20px 30px 20px;
+    overflow: hidden;
+  }
+
+  .home-avis__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .home-avis__header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .home-avis__title {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .avis-swiper {
+    width: 100%;
+    padding: 20px 0 60px 0;
+    overflow: hidden;
+  }
+
+  /*
+    DESKTOP
+  */
+  .avis-swiper .swiper-slide {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .home-avis__block-image {
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+
+  .home-avis__block-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .home-avis__block-image--placeholder {
+    background-color: #f3f3f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home-avis__block-image--placeholder svg {
+    max-width: 100px;
+    opacity: 0.3;
+  }
+
+  .home-avis__block-stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  .home-avis__block-stars svg {
+    width: var(--avis-star-size);
+    height: var(--avis-star-size);
+    fill: var(--avis-star-color);
+    flex-shrink: 0;
+  }
+
+  .home-avis__block-description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+    color: #000;
+  }
+
+  .home-avis__block-author {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+  }
+
+  /*
+    PAGINATION
+  */
+  .avis-swiper .swiper-pagination {
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .avis-swiper .swiper-pagination-bullet {
+    width: 13px;
+    height: 13px;
+    margin: 0 !important;
+    opacity: 0.3;
+    background: #000 !important;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .avis-swiper .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+
+  /*
+    FLÈCHES CACHÉES
+  */
+  .avis-swiper .swiper-button-next,
+  .avis-swiper .swiper-button-prev {
+    display: none;
+  }
+
+
+  /*
+    TABLET
+  */
+  @media screen and (max-width: 989px) {
+
+    .home-avis {
+      padding: 60px 20px;
+    }
+
+    .home-avis__title {
+      font-size: 28px;
+    }
+
+  }
+
+
+  /*
+    MOBILE
+  */
+  @media screen and (max-width: 749px) {
+
+    .home-avis {
+      width: 100%;
+      padding: 40px 0;
+      overflow: hidden;
+    }
+
+    .home-avis__container {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .home-avis__header {
+      margin-bottom: 30px;
+      padding: 0 20px;
+    }
+
+    .home-avis__title {
+      font-size: 22px;
+    }
+
+    /*
+      IMPORTANT :
+      Le carousel prend toute la largeur.
+      Une seule slide est visible.
+    */
+    .avis-swiper {
+      width: 100%;
+      max-width: 100%;
+      padding: 20px 0 60px 0;
+      overflow: hidden;
+    }
+
+    /*
+      IMPORTANT :
+      On laisse Swiper gérer le wrapper.
+      Aucun justify-content ici.
+    */
+    .avis-swiper .swiper-wrapper {
+      justify-content: flex-start !important;
+    }
+
+    /*
+      UNE SEULE CARTE À LA FOIS
+    */
+    .avis-swiper .swiper-slide {
+      width: 100% !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+
+      text-align: center;
+
+      box-sizing: border-box;
+      padding: 0 24px;
+    }
+
+    /*
+      IMAGE
+    */
+    .home-avis__block-image {
+      width: 100%;
+      height: 380px;
+      margin-bottom: 24px;
+      border-radius: 12px;
+    }
+
+    /*
+      IMAGE À L'INTÉRIEUR DE LA CARTE
+    */
+    .home-avis__block-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /*
+      ÉTOILES
+    */
+    .home-avis__block-stars {
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    /*
+      TEXTE
+    */
+    .home-avis__block-description {
+      width: 100%;
+      max-width: 600px;
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: center;
+      margin: 0 auto 20px auto;
+    }
+
+    /*
+      AUTEUR
+    */
+    .home-avis__block-author {
+      width: 100%;
+      text-align: center;
+      margin: 0;
+    }
+
+    /*
+      POINTS
+    */
+    .avis-swiper .swiper-pagination {
+      position: absolute;
+      bottom: 10px;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      gap: 10px;
+    }
+
+  }
+</style>
+
+
+<div
+  class="home-avis"
+  style="
+    --avis-star-color: {{ section.settings.star_color }};
+    --avis-star-size: {{ section.settings.star_size }}px;
+  "
+>
+
+  <div class="home-avis__container">
+
+    <div class="home-avis__header">
+
+      {% if section.settings.title != blank %}
+        <h2 class="home-avis__title">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+
+    </div>
+
+
+    <div class="swiper avis-swiper">
+
+      <div class="swiper-wrapper">
+
+        {% for block in section.blocks %}
+
+          <div
+            class="swiper-slide"
+            {{ block.shopify_attributes }}
+          >
+
+            {% if block.settings.image != blank %}
+
+              <div class="home-avis__block-image">
+
+                {{
+                  block.settings.image
+                  | image_url: width: 800
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '320, 640',
+                    alt: block.settings.image.alt
+                  | escape
+                }}
+
+              </div>
+
+            {% else %}
+
+              <div class="home-avis__block-image home-avis__block-image--placeholder">
+
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+
+              </div>
+
+            {% endif %}
+
+
+            <div class="home-avis__block-stars">
+
+              {% assign stars = block.settings.stars | default: 5 %}
+
+              {% for i in (1..stars) %}
+
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+
+              {% endfor %}
+
+            </div>
+
+
+            {% if block.settings.description != blank %}
+
+              <p class="home-avis__block-description">
+                {{ block.settings.description }}
+              </p>
+
+            {% endif %}
+
+
+            {% if block.settings.author != blank %}
+
+              <p class="home-avis__block-author">
+                {{ block.settings.author }}
+              </p>
+
+            {% endif %}
+
+          </div>
+
+        {% endfor %}
+
+      </div>
+
+
+      <div class="swiper-pagination"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+    const avisSwiper = new Swiper('.avis-swiper', {
+
+      /*
+        MOBILE :
+        1 seul avis visible
+      */
+      slidesPerView: 1,
+
+      spaceBetween: 0,
+
+      centeredSlides: false,
+
+      loop: false,
+
+      watchOverflow: true,
+
+      pagination: {
+        el: '.avis-swiper .swiper-pagination',
+        clickable: true,
+      },
+
+
+      /*
+        DESKTOP :
+        Plusieurs avis visibles
+      */
+      breakpoints: {
+
+        750: {
+
+          slidesPerView: 'auto',
+
+          spaceBetween: 30,
+
+          centeredSlides: false,
+
+        }
+
+      }
+
+    });
+
+
+    /*
+      Mise à jour lorsque la taille de l'écran change
+    */
+    window.addEventListener('resize', function () {
+
+      avisSwiper.update();
+
+    });
+
+  });
+
+</script>
+
+
+{% schema %}
+
+{
+  "name": "Home Avis",
+
+  "tag": "section",
+
+  "settings": [
+
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Ce que nos clients disent"
+    },
+
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Couleur des étoiles",
+      "default": "#000000"
+    },
+
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Taille des étoiles (px)",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "default": 28
+    }
+
+  ],
+
+  "blocks": [
+
+    {
+      "type": "avis_block",
+
+      "name": "Avis",
+
+      "settings": [
+
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Nombre d'étoiles",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Témoignage",
+          "default": "Excellent produit, je recommande vivement !"
+        },
+
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Auteur",
+          "default": "Marie D."
+        }
+
+      ]
+
+    }
+
+  ],
+
+  "presets": [
+
+    {
+      "name": "Home Avis",
+
+      "blocks": [
+        {
+          "type": "avis_block"
+        },
+        {
+          "type": "avis_block"
+        },
+        {
+          "type": "avis_block"
+        },
+        {
+          "type": "avis_block"
+        }
+      ]
+
+    }
+
+  ]
+
+}
+
+{% endschema %}

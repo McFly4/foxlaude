@@ -1,0 +1,499 @@
+{% comment %}
+  Section: Home Header Carousel
+  Description: Carousel avec Swiper JS, images responsive et contenu superposé
+{% endcomment %}
+
+<section class="home-header-carousel">
+  <div class="swiper hero-swiper">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide" {{ block.shopify_attributes }}>
+          <div class="hero-slide">
+            {%- comment -%} Image Desktop {%- endcomment -%}
+            {% if block.settings.image_desktop != blank %}
+              <div class="hero-slide__image hero-slide__image--desktop">
+                {{
+                  block.settings.image_desktop
+                  | image_url: width: 2500
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '375, 550, 750, 1100, 1500, 1920',
+                    sizes: '100vw',
+                    alt: block.settings.image_desktop.alt
+                  | escape
+                }}
+              </div>
+            {% endif %}
+
+            {%- comment -%} Image Mobile {%- endcomment -%}
+            {% if block.settings.image_mobile != blank %}
+              <div class="hero-slide__image hero-slide__image--mobile">
+                {{
+                  block.settings.image_mobile
+                  | image_url: width: 750
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '375, 550, 750',
+                    sizes: '100vw',
+                    alt: block.settings.image_mobile.alt
+                  | escape
+                }}
+              </div>
+            {% endif %}
+
+            {%- comment -%} Contenu superposé {%- endcomment -%}
+            <div class="hero-slide__content">
+              <div class="hero-slide__content-inner">
+                <div class="hero-slide-trustpilot">
+                  <img src="{{'fiveStars.svg' | asset_url }}" alt="trustpilot cleene">
+                  <span class="trustpilot-text">{{ block.settings.trustpilot_text }}</span>
+                </div>
+
+                {% if block.settings.title != blank %}
+                  <div class="hero-slide__title">{{ block.settings.title }}</div>
+                {% endif %}
+
+                {% if block.settings.description != blank %}
+                  <div class="hero-slide__description">
+                    {{ block.settings.description }}
+                  </div>
+                {% endif %}
+
+                <div class="home-header-btn">
+                  <a href="{{ block.settings.cta_link }}" class="hero-slide__cta">
+                    {{ block.settings.cta_text }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {%- comment -%} Navigation {%- endcomment -%}
+    {% if section.blocks.size > 1 %}
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .trustpilot-rating {
+    text-decoration: underline;
+    color: #000;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px; /* 216.667% */
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+  }
+
+  .hero-slide-trustpilot {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .hero-slide-trustpilot img {
+    width: 80px;
+  }
+
+  .hero-slide-trustpilot p {
+    color: #000;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px; /* 216.667% */
+  }
+
+  .home-header-carousel {
+    width: 100%;
+    height: calc(100vh - 60px);
+    max-height: 800px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-slide__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-slide__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Overlay opacity pour mobile */
+  .hero-slide__image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .hero-slide__image::after {
+      display: block;
+    }
+  }
+
+  /* Affichage responsive des images */
+  .hero-slide__image--mobile {
+    display: block;
+  }
+
+  .hero-slide__image--desktop {
+    display: none;
+  }
+
+  @media screen and (min-width: 750px) {
+    .hero-slide__image--mobile {
+      display: none;
+    }
+
+    .hero-slide__image--desktop {
+      display: block;
+    }
+  }
+
+  /* Contenu superposé */
+  .hero-slide__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    padding: 0 20px;
+  }
+
+  .hero-slide__content-inner {
+    max-width: 700px;
+    color: white;
+  }
+
+  .hero-slide-trustpilot {
+    margin-bottom: 10px;
+  }
+
+  .hero-slide-trustpilot a {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .trustpilot-text {
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .trustpilot-rating {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .hero-slide__title p {
+    color: #ffffff;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    margin-bottom: 10px;
+  }
+
+  .hero-slide__description {
+    max-width: 430px;
+    margin-bottom: 30px;
+  }
+
+  .hero-slide__description p {
+    color: #ffffff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .hero-slide__cta {
+    background: #18466d;
+    padding: 11px 36px;
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  /* Navigation Swiper */
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: white;
+    width: 50px;
+    height: 50px;
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 24px;
+  }
+
+  .swiper-pagination {
+    bottom: 30px !important;
+  }
+
+  .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+    background: #000 !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #ffffff !important;
+  }
+
+  /* Responsive */
+  @media screen and (min-width: 750px) {
+    .hero-slide__content {
+      padding: 0 60px;
+    }
+
+    .hero-slide__title {
+      font-size: 3.5rem;
+    }
+
+    .hero-slide__description {
+      font-size: 1.25rem;
+    }
+  }
+
+  .hero-slide__image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Ajoutez cette ligne avec l'opacité souhaitée */
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .home-header-btn {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-slide__cta {
+      font-size: 14px;
+    }
+
+    .hero-slide__content-inner {
+      position: absolute;
+      bottom: 90px;
+      width: 100%;
+      max-width: 390px;
+      left: 0;
+    }
+
+    .hero-slide__image::after {
+      display: block;
+    }
+
+    .hero-slide-trustpilot {
+      text-align: center;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .hero-slide-trustpilot a {
+      color: #fff;
+      justify-content: center;
+    }
+
+    .hero-slide-trustpilot span {
+      color: #fff;
+    }
+
+    .hero-slide-trustpilot p {
+      display: none;
+    }
+
+    .hero-slide-trustpilot .trustpilot-trustpilot-image {
+      display: none;
+    }
+
+    .home-header-carousel {
+      height: 600px;
+    }
+
+    .hero-slide__title {
+      color: #fff;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+
+    .hero-slide__title p {
+      color: #fff;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .hero-slide__description {
+      max-width: unset;
+      width: 95%;
+    }
+
+    .hero-slide__description p {
+      padding: 0 40px;
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const heroSwiper = new Swiper('.hero-swiper', {
+      loop: {% if section.blocks.size > 1 %}true{% else %}false{% endif %},
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      speed: 800,
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Home Header Carousel",
+  "tag": "section",
+  "class": "section-home-header",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Image Desktop"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image Mobile"
+        },
+        {
+          "type": "text",
+          "id": "trustpilot_text",
+          "label": "Trustpilot - Texte",
+          "default": "Excellent sur Trustpilot"
+        },
+        {
+          "type": "text",
+          "id": "trustpilot_rating",
+          "label": "Trustpilot - Avis",
+          "default": "4.5/5"
+        },
+        {
+          "type": "url",
+          "id": "trustpilot_link",
+          "label": "Trustpilot - Lien"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Titre",
+          "default": "<p>Votre titre ici</p>"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Votre description ici</p>"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "Texte du bouton",
+          "default": "Découvrir"
+        },
+        {
+          "type": "url",
+          "id": "cta_link",
+          "label": "Lien du bouton"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Header Carousel",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

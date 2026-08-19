@@ -1,0 +1,665 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "home-header": {
+      "type": "home-header",
+      "blocks": {
+        "slide_Fay3eA": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "trustpilot_text": "Excellent sur Trustpilot",
+            "trustpilot_rating": "4.5/5",
+            "trustpilot_link": "",
+            "title": "<p>Votre titre ici</p>",
+            "description": "<p>Votre description ici</p>",
+            "cta_text": "Découvrir",
+            "cta_link": ""
+          }
+        },
+        "slide_Udyndr": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "trustpilot_text": "Excellent sur Trustpilot",
+            "trustpilot_rating": "4.5/5",
+            "trustpilot_link": "",
+            "title": "<p>Votre titre ici</p>",
+            "description": "<p>Votre description ici</p>",
+            "cta_text": "Découvrir",
+            "cta_link": ""
+          }
+        },
+        "slide_XmERYL": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "trustpilot_text": "Excellent sur Trustpilot",
+            "trustpilot_rating": "4.5/5",
+            "trustpilot_link": "",
+            "title": "<p>Votre titre ici</p>",
+            "description": "<p>Votre description ici</p>",
+            "cta_text": "Découvrir",
+            "cta_link": ""
+          }
+        },
+        "slide_fndtxV": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/Untitled_design_7.jpg",
+            "image_mobile": "shopify://shop_images/foxlaude_hero_mobile.jpg",
+            "trustpilot_text": "4.5/5 - 118 étudiants conquis",
+            "trustpilot_rating": "4.5/5",
+            "trustpilot_link": "",
+            "title": "<p><strong>La liberté d'écrire. La liberté d'effacer.</strong></p><p></p>",
+            "description": "<p>Car votre sac n'a plus besoin de brouillons qui s'accumulent</p><p>FoxLaude réinvente le cahier en intégrant une ardoise à sa couverture pour vos idées, calculs, schémas...</p><p>Et si quelque chose mérite d'être gardé, notez-le sur papier ou scannez-le en un instant</p>",
+            "cta_text": "Je veux mon FoxLaude",
+            "cta_link": "shopify://products/le-duo-inseparable-cahier-bleu-stylo-ardoise"
+          }
+        }
+      },
+      "block_order": [
+        "slide_Fay3eA",
+        "slide_Udyndr",
+        "slide_XmERYL",
+        "slide_fndtxV"
+      ],
+      "settings": {}
+    },
+    "home-banner": {
+      "type": "home-banner",
+      "blocks": {
+        "feature_LB96Gi": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/FoxLaude_Group_4.svg",
+            "text": "Stylo ardoise mine fine"
+          }
+        },
+        "feature_mXtkki": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/FoxLaude_Group_2.svg",
+            "text": "Scannable en 2s"
+          }
+        },
+        "feature_RLLDqb": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/FoxLaude_Group_3.svg",
+            "text": "Fabriqué en France"
+          }
+        },
+        "feature_GAEpTD": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/FoxLaude_Group_5.svg",
+            "text": "Matériaux durables"
+          }
+        }
+      },
+      "block_order": [
+        "feature_LB96Gi",
+        "feature_mXtkki",
+        "feature_RLLDqb",
+        "feature_GAEpTD"
+      ],
+      "settings": {}
+    },
+    "product-grid": {
+      "type": "product-grid",
+      "blocks": {
+        "product_miQBCj": {
+          "type": "LL-product-grid-item",
+          "settings": {
+            "product": "le-duo-inseparable-cahier-bleu-stylo-ardoise"
+          },
+          "blocks": {
+            "static-product-card": {
+              "type": "_product-card",
+              "static": true,
+              "settings": {
+                "product_card_gap": 8
+              },
+              "blocks": {
+                "card-gallery": {
+                  "type": "_product-card-gallery",
+                  "settings": { "image_ratio": "portrait" }
+                },
+                "product-title": {
+                  "type": "product-title"
+                },
+                "price": {
+                  "type": "price"
+                }
+              },
+              "block_order": ["card-gallery", "product-title", "price"]
+            }
+          }
+        },
+        "product_qUB6a9": {
+          "type": "LL-product-grid-item",
+          "settings": {
+            "product": "le-cahier-foxlaude-beige-edition-limite"
+          },
+          "blocks": {
+            "static-product-card": {
+              "type": "_product-card",
+              "static": true,
+              "settings": {
+                "product_card_gap": 8
+              },
+              "blocks": {
+                "card-gallery": {
+                  "type": "_product-card-gallery",
+                  "settings": { "image_ratio": "portrait" }
+                },
+                "product-title": {
+                  "type": "product-title"
+                },
+                "price": {
+                  "type": "price"
+                }
+              },
+              "block_order": ["card-gallery", "product-title", "price"]
+            }
+          }
+        },
+        "product_HgDPkt": {
+          "type": "LL-product-grid-item",
+          "settings": {
+            "product": "le-duo-foxlaude-bleu-beige-1-stylo"
+          },
+          "blocks": {
+            "static-product-card": {
+              "type": "_product-card",
+              "static": true,
+              "settings": {
+                "product_card_gap": 8
+              },
+              "blocks": {
+                "card-gallery": {
+                  "type": "_product-card-gallery",
+                  "settings": { "image_ratio": "portrait" }
+                },
+                "product-title": {
+                  "type": "product-title"
+                },
+                "price": {
+                  "type": "price"
+                }
+              },
+              "block_order": ["card-gallery", "product-title", "price"]
+            }
+          }
+        },
+        "product_BifdkW": {
+          "type": "LL-product-grid-item",
+          "settings": {
+            "product": "cahier-foxlaude"
+          },
+          "blocks": {
+            "static-product-card": {
+              "type": "_product-card",
+              "static": true,
+              "settings": {
+                "product_card_gap": 8
+              },
+              "blocks": {
+                "card-gallery": {
+                  "type": "_product-card-gallery",
+                  "settings": { "image_ratio": "portrait" }
+                },
+                "product-title": {
+                  "type": "product-title"
+                },
+                "price": {
+                  "type": "price"
+                }
+              },
+              "block_order": ["card-gallery", "product-title", "price"]
+            }
+          }
+        },
+        "product_483qbr": {
+          "type": "LL-product-grid-item",
+          "settings": {
+            "product": "pack-de-3-stylos-ardoise-foxlaude"
+          },
+          "blocks": {
+            "static-product-card": {
+              "type": "_product-card",
+              "static": true,
+              "settings": {
+                "product_card_gap": 8
+              },
+              "blocks": {
+                "card-gallery": {
+                  "type": "_product-card-gallery",
+                  "settings": { "image_ratio": "portrait" }
+                },
+                "product-title": {
+                  "type": "product-title"
+                },
+                "price": {
+                  "type": "price"
+                }
+              },
+              "block_order": ["card-gallery", "product-title", "price"]
+            }
+          }
+        },
+        "product_CVtPF7": {
+          "type": "LL-product-grid-item",
+          "settings": {
+            "product": "stylo-ardoise-foxlaude"
+          },
+          "blocks": {
+            "static-product-card": {
+              "type": "_product-card",
+              "static": true,
+              "settings": {
+                "product_card_gap": 8
+              },
+              "blocks": {
+                "card-gallery": {
+                  "type": "_product-card-gallery",
+                  "settings": { "image_ratio": "portrait" }
+                },
+                "product-title": {
+                  "type": "product-title"
+                },
+                "price": {
+                  "type": "price"
+                }
+              },
+              "block_order": ["card-gallery", "product-title", "price"]
+            }
+          }
+        }
+      },
+      "block_order": [
+        "product_miQBCj",
+        "product_qUB6a9",
+        "product_HgDPkt",
+        "product_BifdkW",
+        "product_483qbr",
+        "product_CVtPF7"
+      ],
+      "settings": {
+        "title": "Les essentiels FoxLaude"
+      }
+    },
+    "home-reels": {
+      "type": "home-reels",
+      "blocks": {
+        "video_product_EtUVek": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/Video mathis Foxlaude.MOV",
+            "title": "",
+            "subtitle": "",
+            "price": "20",
+            "cta_link": ""
+          }
+        },
+        "video_product_LQq8b9": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/meuf stylo foxlaude.mov",
+            "title": "",
+            "subtitle": "",
+            "price": "",
+            "cta_link": ""
+          }
+        },
+        "video_product_jfmptW": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/Video Inalyne foxlaude_27fbf3a8-0bd9-477f-a416-4d1567606fae.mov",
+            "title": "",
+            "subtitle": "",
+            "price": "",
+            "cta_link": ""
+          }
+        },
+        "video_product_Gp8tay": {
+          "type": "video_product",
+          "settings": {
+            "video": "shopify://files/videos/Scan foxlaude.mov",
+            "title": "",
+            "subtitle": "",
+            "price": "20",
+            "cta_link": ""
+          }
+        },
+        "video_product_rgwVdV": {
+          "type": "video_product",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/Melbourne Business 4K.mp4",
+            "title": "Nom du produit",
+            "subtitle": "Sous-titre",
+            "price": "20",
+            "cta_link": ""
+          }
+        },
+        "video_product_BDnTXg": {
+          "type": "video_product",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/Melbourne Business 4K.mp4",
+            "title": "Nom du produit",
+            "subtitle": "Sous-titre",
+            "price": "20",
+            "cta_link": ""
+          }
+        },
+        "video_product_MkfkCP": {
+          "type": "video_product",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/Melbourne Business 4K.mp4",
+            "title": "Nom du produit",
+            "subtitle": "Sous-titre",
+            "price": "20",
+            "cta_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_product_EtUVek",
+        "video_product_LQq8b9",
+        "video_product_jfmptW",
+        "video_product_Gp8tay",
+        "video_product_rgwVdV",
+        "video_product_BDnTXg",
+        "video_product_MkfkCP"
+      ],
+      "settings": {
+        "subTitle": "Ils ont adopté FoxLaude",
+        "mainTitle": "<p>+300 étudiants ont déjà fait le choix de l'ardoise réinventée</p>"
+      }
+    },
+    "home-explain": {
+      "type": "home-explain",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/FoxLaude_Rectangle.png",
+        "title": "Chez FoxLaude, on a réinventé l'ardoise pour qu'elle devienne ton meilleur allié",
+        "text": "<p>Chaque année, un étudiant gaspille en moyenne 250 feuilles de brouillon. Des notes qui s'empilent, se perdent, finissent froissées au fond du sac.<br/><br/>On a décidé de changer ça. FoxLaude, c'est l'ardoise réinventée : effaçable à l'infini, scannable instantanément, écologique par essence.<br/><br/>Le brouillon intelligent qui accompagne ton ordinateur au moment où le papier redevient indispensable.<br/><br/>Prends tes notes. Scanne ce qui compte. Efface le reste.Garde seulement l'essentiel.</p>"
+      }
+    },
+    "home-works": {
+      "type": "home-works",
+      "blocks": {
+        "work_block_f9k4pm": {
+          "type": "work_block",
+          "settings": {
+            "video": "shopify://files/videos/TEST .mov",
+            "block_title": "1. Écris",
+            "description": "Tu écris ton cours et tes notes sur les pages du cahier comme tu le ferais avec n'importe quel cahier classique"
+          }
+        },
+        "work_block_4Qnjdi": {
+          "type": "work_block",
+          "settings": {
+            "video": "shopify://files/videos/brouilloj.mov",
+            "block_title": "2. Griffonne",
+            "description": "Quand tu as besoin de dessiner un schéma ou de poser une équation, tu utilises la couverture intérieure en ardoise au lieu de salir ton cahier"
+          }
+        },
+        "work_block_UAc6M4": {
+          "type": "work_block",
+          "settings": {
+            "video": "shopify://files/videos/scann 2 .mov",
+            "block_title": "3. Scanne ou efface",
+            "description": "Si ton schéma mérite d'être gardé, tu le scannes avant de l'effacer et tu l'envoies directement sur ton ordinateur."
+          }
+        },
+        "work_block_Mi9cdA": {
+          "type": "work_block",
+          "settings": {
+            "video": "shopify://files/videos/efface 2.mov",
+            "block_title": "4. Efface, recommence",
+            "description": "Une fois que tu n'as plus besoin de ton brouillon, tu l'effaces et il ne reste aucune trace"
+          }
+        }
+      },
+      "block_order": [
+        "work_block_f9k4pm",
+        "work_block_4Qnjdi",
+        "work_block_UAc6M4",
+        "work_block_Mi9cdA"
+      ],
+      "settings": {
+        "title": "Comment ça marche",
+        "subtitle": "",
+        "cta_link": "https://foxlaude.com/products/cahier-foxlaude"
+      }
+    },
+    "home-avis": {
+      "type": "home-avis",
+      "blocks": {
+        "avis_block_Bja4kH": {
+          "type": "avis_block",
+          "settings": {
+            "image": "shopify://shop_images/lisa_foxlaude.png",
+            "stars": 5,
+            "description": "Franchement le plus bel objet que j'ai eu pour réviser, le design est incroyable. Ça donne presque envie de bosser rien que pour l'utiliser.",
+            "author": "Lisa, étudiante en médecine"
+          }
+        },
+        "avis_block_P7iTTh": {
+          "type": "avis_block",
+          "settings": {
+            "image": "shopify://shop_images/Pportrait_homme_foxlaude.png",
+            "stars": 5,
+            "description": "Utilisé pendant ma prépa c'est le meilleur outil de révision que j'ai trouvé. Je faisais mes fiches dans le cahier, puis je les apprenais par cœur en les réécrivant sur l'ardoise intégrée, jusqu'à les connaître parfaitement.",
+            "author": "Alexandre, étudiant à l'X"
+          }
+        },
+        "avis_block_f6EYby": {
+          "type": "avis_block",
+          "settings": {
+            "image": "shopify://shop_images/banba_foxlaude.png",
+            "stars": 4,
+            "description": "Utilisé pour préparer mes entretiens en finance. Fiches techniques dans le cahier, puis je m'entraîne à l'oral en réécrivant sur l'ardoise, comme en conditions réelles. Simple, efficace, objet clean.",
+            "author": "Bamba, étudiant à Sciences Po"
+          }
+        },
+        "avis_block_qzFMX6": {
+          "type": "avis_block",
+          "settings": {
+            "image": "shopify://shop_images/Yse_foxlaude.png",
+            "stars": 5,
+            "description": "Ma première année de prépa et déjà un indispensable. Ça m'aide vraiment à structurer mes révisions et à m'organiser.",
+            "author": "Ysé, première année de prépa ECG"
+          }
+        },
+        "avis_block_bkrnK7": {
+          "type": "avis_block",
+          "settings": {
+            "image": "shopify://shop_images/han_foxlaude_2.png",
+            "stars": 5,
+            "description": "Fini le désordre dans mon sac avec dix bouts de papier qui traînent partout ! Le concept de l'ardoise en couverture est brillant",
+            "author": "Anne, étudiante en licence de droit"
+          }
+        }
+      },
+      "block_order": [
+        "avis_block_Bja4kH",
+        "avis_block_P7iTTh",
+        "avis_block_f6EYby",
+        "avis_block_qzFMX6",
+        "avis_block_bkrnK7"
+      ],
+      "settings": {
+        "title": "Comment FoxLaude a transformé leur manière d'étudier",
+        "star_color": "#000000",
+        "star_size": 26
+      }
+    },
+    "home-grid": {
+      "type": "home-grid",
+      "blocks": {
+        "grid_image_HCWdh8": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/FoxLaude_Rectangle_a326c565-42f4-41c3-a9f7-cb92ac312521.png"
+          }
+        },
+        "grid_image_Bpkb3k": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/FoxLaude_Rectangle_2_305fd9d3-fb7b-47e4-a545-22cfa31ee247.png"
+          }
+        },
+        "grid_image_rPpyyY": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/FoxLaude_Rectangle_3.png"
+          }
+        },
+        "grid_image_k8Cr8K": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/FoxLaude_Rectangle_4.png"
+          }
+        },
+        "grid_image_7dBdWq": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/FoxLaude_Rectangle_5.png"
+          }
+        },
+        "grid_image_yf4DtM": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/FoxLaude_Rectangle_6.png"
+          }
+        },
+        "grid_image_TLgXBm": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/FoxLaude_Rectangle_7.png"
+          }
+        }
+      },
+      "block_order": [
+        "grid_image_HCWdh8",
+        "grid_image_Bpkb3k",
+        "grid_image_rPpyyY",
+        "grid_image_k8Cr8K",
+        "grid_image_7dBdWq",
+        "grid_image_yf4DtM",
+        "grid_image_TLgXBm"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "home-faq": {
+      "type": "home-faq",
+      "blocks": {
+        "faq_item_LmNd7r": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Comment fonctionne l'ardoise FoxLaude ?",
+            "answer": "<p>Voici la réponse à votre question.</p>"
+          }
+        },
+        "faq_item_NXxUdw": {
+          "type": "faq_item",
+          "settings": {
+            "question": "L'ardoise est-elle vraiment réutilisable à l'infini ?",
+            "answer": "<p>Voici la réponse à votre question.</p>"
+          }
+        },
+        "faq_item_rcKDxg": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Avec quels stylos puis-je écrire sur FoxLaude ?",
+            "answer": "<p>Voici la réponse à votre question.</p>"
+          }
+        },
+        "faq_item_zJ6Wmp": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Comment scanner mes notes ?",
+            "answer": "<p>Voici la réponse à votre question.</p>"
+          }
+        },
+        "faq_item_DN9tKq": {
+          "type": "faq_item",
+          "settings": {
+            "question": "FoxLaude remplace-t-il complétement le papier ?",
+            "answer": "<p>Voici la réponse à votre question.</p>"
+          }
+        },
+        "faq_item_Ffynjf": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Quelle est la différence entre le cahier A4 et la pochette ?",
+            "answer": "<p>Voici la réponse à votre question.</p>"
+          }
+        },
+        "faq_item_g4nkEz": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Est-ce vraiment écologique ?",
+            "answer": "<p>Voici la réponse à votre question.</p>"
+          }
+        },
+        "faq_item_aemcYa": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Livrez-vous partout en France ?",
+            "answer": "<p>Voici la réponse à votre question.</p>"
+          }
+        },
+        "faq_item_WqYHmY": {
+          "type": "faq_item",
+          "settings": {
+            "question": "FoxLaude est-il adapté pour les lycéens et collégiens ?",
+            "answer": "<p>Voici la réponse à votre question.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_LmNd7r",
+        "faq_item_NXxUdw",
+        "faq_item_rcKDxg",
+        "faq_item_zJ6Wmp",
+        "faq_item_DN9tKq",
+        "faq_item_Ffynjf",
+        "faq_item_g4nkEz",
+        "faq_item_aemcYa",
+        "faq_item_WqYHmY"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/FoxLaudeRectangle_1.png",
+        "title": "Une ardoise, mille questions"
+      }
+    }
+  },
+  "order": [
+    "home-header",
+    "home-banner",
+    "product-grid",
+    "home-reels",
+    "home-explain",
+    "home-works",
+    "home-avis",
+    "home-grid",
+    "home-faq"
+  ]
+}

@@ -1,0 +1,258 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "contact_hero": {
+      "type": "LL-contact-hero",
+      "blocks": {
+        "logo_NPTgVz": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/Logo_Seine_avenue.svg",
+            "logo_alt": "",
+            "logo_text": "",
+            "logo_url": ""
+          }
+        },
+        "logo_aDfa33": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/Europ_Express_Logo.jpg",
+            "logo_alt": "",
+            "logo_text": "",
+            "logo_url": ""
+          }
+        },
+        "logo_dWwxQ4": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/ESSEC_Logo.jpg",
+            "logo_alt": "",
+            "logo_text": "",
+            "logo_url": ""
+          }
+        },
+        "logo_c4LYWb": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/LA_Landing.svg",
+            "logo_alt": "",
+            "logo_text": "",
+            "logo_url": ""
+          }
+        },
+        "value_1": {
+          "type": "value",
+          "settings": {
+            "icon": "✦",
+            "title": "Personnalisation",
+            "text": "Cahiers, pochettes ou encore stylos pour vos fournitures internes ou cadeaux d'entreprise",
+            "back_text": "Logo, couleurs, formats adaptés à votre identité. Un objet qu'on garde, pas un goodies qu'on jette"
+          }
+        },
+        "value_2": {
+          "type": "value",
+          "settings": {
+            "icon": "🇫🇷",
+            "title": "Made in France",
+            "text": "Cahier conçu et fabriqué en France, FoxLaude soutient la souveraineté industrielle nationale",
+            "back_text": "Chaque cahier est produit en Île-de-France, avec un contrôle qualité à chaque étape. Circuit court, emplois locaux, qualité tracée. Certifié Imprim'Vert, FSC, PEFC."
+          }
+        },
+        "value_3": {
+          "type": "value",
+          "settings": {
+            "icon": "♻️",
+            "title": "Écolo & économique",
+            "text": "Chaque cahier FoxLaude remplace des milliers de feuilles de brouillons",
+            "back_text": "Moins de brouillons jetés, c'est moins de papier, moins de déchets, moins d'arbres abattus. Et parce que FoxLaude est fait pour durer, pas racheté chaque trimestre, c'est moins de commandes récurrentes."
+          }
+        },
+        "value_4": {
+          "type": "value",
+          "settings": {
+            "icon": "🤝",
+            "title": "Engagement social",
+            "text": "5% de nos bénéfices sont reversés à des associations œuvrant pour l'éducation",
+            "back_text": "En 2026, ces fonds soutiennent l'accès à l'éducation des femmes dans les pays en développement via l'association Toute à l'École. Un engagement de long terme, porté à chaque commande."
+          }
+        }
+      },
+      "block_order": [
+        "logo_NPTgVz",
+        "logo_aDfa33",
+        "logo_dWwxQ4",
+        "logo_c4LYWb",
+        "value_1",
+        "value_2",
+        "value_3",
+        "value_4"
+      ],
+      "settings": {
+        "hero_image": "shopify://shop_images/ESSEC_FOXLAUDE.png",
+        "hero_image_position": "center center",
+        "overlay_opacity": 0,
+        "show_stars": false,
+        "star_count": 1,
+        "stars_label": "",
+        "hero_title": "Papeterie d'exception personnalisée pour votre école ou votre entreprise",
+        "cta1_label": "Prendre contact",
+        "cta1_url": "",
+        "cta1_color": "#18466d",
+        "cta1_text_color": "#ffffff",
+        "cta2_label": "En savoir plus",
+        "cta2_url": "",
+        "intro_text": "<h3>Ils nous font confiance </h3>",
+        "logos_clients": "Seine Avenue / La Landing / ESSEC / Hanoi restaurant",
+        "values_title": "Pourquoi nous choisir"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "title": {
+          "type": "text",
+          "name": "t:names.title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "text",
+          "name": "t:names.content",
+          "settings": {
+            "text": "{{ closest.page.content }}",
+            "width": "100%",
+            "max_width": "narrow",
+            "alignment": "center",
+            "type_preset": "rte",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "content"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 0
+      }
+    },
+    "form": {
+      "type": "section",
+      "blocks": {
+        "contact_form_UwiCkQ": {
+          "type": "contact-form",
+          "settings": {
+            "width": "custom",
+            "custom_width": 50,
+            "width_mobile": "custom",
+            "custom_width_mobile": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "submit-button": {
+              "type": "contact-form-submit-button",
+              "static": true,
+              "settings": {
+                "label": "Soumettre",
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
+      "block_order": [
+        "contact_form_UwiCkQ"
+      ],
+      "name": "t:names.contact_form",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-1",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 32,
+        "padding-block-end": 84
+      }
+    }
+  },
+  "order": [
+    "contact_hero",
+    "main",
+    "form"
+  ]
+}

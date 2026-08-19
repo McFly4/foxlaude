@@ -1,0 +1,123 @@
+{% liquid
+  assign product = closest.product
+  assign accordion_items = product.metafields.custom.accordion_items.value
+%}
+
+{% if accordion_items != blank %}
+  <div class="ll-product-accordion" {{ block.shopify_attributes }}>
+    {% for item in accordion_items %}
+      <div class="ll-product-accordion__item">
+        <button type="button" class="ll-product-accordion__header" aria-expanded="false">
+          <span>{{ item.question.value }}</span>
+          <span class="svg-wrapper ll-product-accordion__icon">
+            {{- 'icon-plus.svg' | inline_asset_content -}}
+          </span>
+        </button>
+        <div class="ll-product-accordion__panel">
+          <div class="ll-product-accordion__content rte">
+            {{ item.answer | metafield_tag }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<style>
+  .ll-product-accordion {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ll-product-accordion__item {
+    border-block-start: 1px solid var(--color-border, rgb(0 0 0 / 0.1));
+  }
+
+  .ll-product-accordion__item:last-child {
+    border-block-end: 1px solid var(--color-border, rgb(0 0 0 / 0.1));
+  }
+
+  .ll-product-accordion__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: var(--gap-sm, 12px);
+    padding: 16px 0;
+    cursor: pointer;
+    font-weight: var(--font-weight-medium, 500);
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+  }
+
+  .ll-product-accordion__icon {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    transition: transform 0.25s ease;
+  }
+
+  .ll-product-accordion__header[aria-expanded='true'] .ll-product-accordion__icon {
+    transform: rotate(45deg);
+  }
+
+  .ll-product-accordion__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition: grid-template-rows 0.3s ease;
+  }
+
+  .ll-product-accordion__header[aria-expanded='true'] + .ll-product-accordion__panel {
+    grid-template-rows: 1fr;
+  }
+
+  .ll-product-accordion__panel > .ll-product-accordion__content {
+    overflow: hidden;
+    min-height: 0;
+    color: rgb(var(--color-foreground-rgb) / 0.75);
+  }
+
+  .ll-product-accordion__content > *:first-child {
+    margin-block-start: 0;
+  }
+
+  .ll-product-accordion__content > *:last-child {
+    margin-block-end: 16px;
+  }
+</style>
+
+<script>
+  (() => {
+    document.querySelectorAll('.ll-product-accordion__header').forEach((header) => {
+      if (header.dataset.bound) return;
+      header.dataset.bound = 'true';
+      header.addEventListener('click', () => {
+        const expanded = header.getAttribute('aria-expanded') === 'true';
+        header.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "LL Accordéon produit",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Utilise le metafield produit custom.accordion_items (liste de références metaobject 'accordion_item' avec champs question + answer)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LL Accordéon produit"
+    }
+  ]
+}
+{% endschema %}

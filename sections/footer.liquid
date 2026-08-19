@@ -1,0 +1,442 @@
+<style>
+  .footer-top {
+    width: 100%;
+  }
+
+  /* Instagram Section */
+  .footer-instagram {
+    text-align: center;
+    margin-bottom: 70px;
+    padding: 40px 20px 0;
+  }
+
+  .footer-instagram__title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1c1c1c;
+    margin-bottom: 12px;
+  }
+
+  .footer-instagram__subtitle {
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 33px;
+  }
+
+  .footer-instagram__grid {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+  }
+
+  .footer-instagram__item {
+    width: 247px;
+    height: 229px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .footer-instagram__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .footer-instagram__item:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Social Bar */
+  .footer-social-bar {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .footer-social-bar__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 60px;
+    background-color: var(--social-pill-color);
+    border-radius: 16px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+
+  .footer-social-bar__item:hover {
+    filter: brightness(0.93);
+  }
+
+  .footer-social-bar__item img {
+    width: var(--social-icon-size, 28px);
+    height: var(--social-icon-size, 28px);
+    object-fit: contain;
+  }
+
+  /* Reassurance Section */
+  .footer-reassurance {
+    margin-bottom: 60px;
+    padding: 0 20px;
+  }
+
+  .footer-reassurance__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .footer-reassurance__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-reassurance__icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+  }
+
+  .footer-reassurance__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .footer-reassurance__title {
+    color: #000;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0 0 5px 0;
+  }
+
+  .footer-reassurance__description {
+    text-align: center;
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 989px) {
+    .footer-instagram {
+      padding: 60px 20px 0;
+    }
+
+    .footer-instagram__grid {
+      overflow-x: auto;
+      justify-content: flex-start;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .footer-instagram__grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .footer-reassurance__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .footer-instagram {
+      padding: 40px 20px 0;
+    }
+
+    .footer-instagram__subtitle {
+      font-size: 16px;
+    }
+
+    .footer-instagram__item {
+      width: 200px;
+      height: 200px;
+    }
+
+    .footer-reassurance__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-instagram__title {
+      font-size: 20px;
+    }
+
+    .footer-reassurance__title {
+      font-size: 20px;
+    }
+  }
+</style>
+
+<div class="footer-top">
+  {%- comment -%} Section Instagram {%- endcomment -%}
+  {% if section.settings.instagram_enable %}
+    <div class="footer-instagram">
+      {% if section.settings.instagram_title != blank %}
+        <h2 class="footer-instagram__title">{{ section.settings.instagram_title }}</h2>
+      {% endif %}
+      {% if section.settings.instagram_subtitle != blank %}
+        <div class="footer-instagram__subtitle">{{ section.settings.instagram_subtitle }}</div>
+      {% endif %}
+
+      {%- assign social_blocks = section.blocks | where: 'type', 'social_icon' -%}
+      {% if social_blocks.size > 0 %}
+        <div class="footer-social-bar" style="--social-icon-size: {{ section.settings.social_icon_size }}px; --social-pill-color: {{ section.settings.social_pill_color }};">
+          {% for block in social_blocks %}
+            <a
+              class="footer-social-bar__item"
+              href="{{ block.settings.link }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              {{ block.shopify_attributes }}
+            >
+              {% if block.settings.icon != blank %}
+                {{
+                  block.settings.icon
+                  | image_url: width: 100
+                  | image_tag: loading: 'lazy', widths: '28, 56', sizes: '28px', alt: block.settings.label
+                }}
+              {% endif %}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="footer-instagram__grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'instagram_image' %}
+            <div class="footer-instagram__item" {{ block.shopify_attributes }}>
+              {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}" target="_blank" rel="noopener noreferrer">
+              {% endif %}
+              {% if block.settings.image != blank %}
+                {{
+                  block.settings.image
+                  | image_url: width: 1000
+                  | image_tag: loading: 'lazy', widths: '200, 300, 400', sizes: '500px'
+                }}
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+              {% if block.settings.link != blank %}
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  {%- comment -%} Section Réassurance {%- endcomment -%}
+  {% if section.settings.reassurance_enable %}
+    <div class="footer-reassurance">
+      <div class="footer-reassurance__grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'reassurance_item' %}
+            <div class="footer-reassurance__item" {{ block.shopify_attributes }}>
+              {% if block.settings.icon != blank %}
+                <div class="footer-reassurance__icon">
+                  {{
+                    block.settings.icon
+                    | image_url: width: 100
+                    | image_tag: loading: 'lazy', widths: '50, 80, 100', sizes: '50px'
+                  }}
+                </div>
+              {% endif %}
+              <div class="footer-reassurance__content">
+                {% if block.settings.title != blank %}
+                  <h3 class="footer-reassurance__title">{{ block.settings.title }}</h3>
+                {% endif %}
+                {% if block.settings.description != blank %}
+                  <p class="footer-reassurance__description">{{ block.settings.description }}</p>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Footer Top",
+  "tag": "section",
+  "class": "footer-top-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Instagram"
+    },
+    {
+      "type": "checkbox",
+      "id": "instagram_enable",
+      "label": "Activer la section Instagram",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "instagram_title",
+      "label": "Titre Instagram",
+      "default": "Suivez-nous sur Instagram"
+    },
+    {
+      "type": "richtext",
+      "id": "instagram_subtitle",
+      "label": "Sous-titre Instagram",
+      "default": "<p>@votre_compte</p>"
+    },
+    {
+      "type": "header",
+      "content": "Réseaux sociaux"
+    },
+    {
+      "type": "color",
+      "id": "social_pill_color",
+      "label": "Couleur de fond des pills",
+      "default": "#fdf0f0"
+    },
+    {
+      "type": "range",
+      "id": "social_icon_size",
+      "label": "Taille des icônes (px)",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "default": 28
+    },
+    {
+      "type": "header",
+      "content": "Section Réassurance"
+    },
+    {
+      "type": "checkbox",
+      "id": "reassurance_enable",
+      "label": "Activer la section Réassurance",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "social_icon",
+      "name": "Icône réseau social",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icône (SVG/PNG)"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Lien"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Nom (accessibilité)",
+          "default": "Instagram"
+        }
+      ]
+    },
+    {
+      "type": "instagram_image",
+      "name": "Image Instagram",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Lien Instagram"
+        }
+      ]
+    },
+    {
+      "type": "reassurance_item",
+      "name": "Item Réassurance",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icône"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre",
+          "default": "Livraison gratuite"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Dès 50€ d'achat"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Top",
+      "blocks": [
+        {
+          "type": "instagram_image"
+        },
+        {
+          "type": "instagram_image"
+        },
+        {
+          "type": "instagram_image"
+        },
+        {
+          "type": "instagram_image"
+        },
+        {
+          "type": "instagram_image"
+        },
+        {
+          "type": "instagram_image"
+        },
+        {
+          "type": "reassurance_item"
+        },
+        {
+          "type": "reassurance_item"
+        },
+        {
+          "type": "reassurance_item"
+        },
+        {
+          "type": "reassurance_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

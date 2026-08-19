@@ -1,0 +1,162 @@
+<style>
+  .ll-find {
+    width: 100%;
+    padding: 60px 20px 80px;
+  }
+
+  .ll-find__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ll-find__title {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 40px;
+  }
+
+  .ll-find__map {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 60px;
+  }
+
+  .ll-find__map img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ll-find__stores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .ll-find__store {
+    padding: 24px;
+    border: 1px solid #efefef;
+    border-radius: 16px;
+  }
+
+  .ll-find__store-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+
+  .ll-find__store-address {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ll-find__stores {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ll-find {
+      padding: 40px 20px 60px;
+    }
+
+    .ll-find__stores {
+      grid-template-columns: 1fr;
+    }
+
+    .ll-find__map {
+      border-radius: 10px;
+      margin-bottom: 40px;
+    }
+  }
+</style>
+
+<div class="ll-find">
+  <div class="ll-find__container">
+    {% if section.settings.title != blank %}
+      <h1 class="ll-find__title">{{ section.settings.title }}</h1>
+    {% endif %}
+
+    {% if section.settings.map_image != blank %}
+      <div class="ll-find__map">
+        {{
+          section.settings.map_image
+          | image_url: width: 1400
+          | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1400', alt: section.settings.map_image.alt
+        }}
+      </div>
+    {% endif %}
+
+    {% assign store_blocks = section.blocks | where: 'type', 'store' %}
+    {% if store_blocks.size > 0 %}
+      <div class="ll-find__stores">
+        {% for block in store_blocks %}
+          <div class="ll-find__store" {{ block.shopify_attributes }}>
+            {% if block.settings.name != blank %}
+              <p class="ll-find__store-name">{{ block.settings.name }}</p>
+            {% endif %}
+            {% if block.settings.address != blank %}
+              <p class="ll-find__store-address">{{ block.settings.address | newline_to_br }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LL - Points de vente",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Où nous trouver"
+    },
+    {
+      "type": "image_picker",
+      "id": "map_image",
+      "label": "Image de la carte"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "store",
+      "name": "Point de vente",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nom du point de vente",
+          "default": "Librairie XYZ"
+        },
+        {
+          "type": "textarea",
+          "id": "address",
+          "label": "Adresse",
+          "default": "12 rue de la Paix\n75001 Paris"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LL - Points de vente",
+      "category": "Custom",
+      "blocks": [
+        { "type": "store" },
+        { "type": "store" },
+        { "type": "store" }
+      ]
+    }
+  ]
+}
+{% endschema %}

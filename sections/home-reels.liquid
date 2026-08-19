@@ -1,0 +1,1006 @@
+<style>
+  .home-reels {
+    width: 100%;
+    padding: 0 20px 60px 20px;
+  }
+
+  .video-card {
+    position: relative;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+
+  .video-card video,
+  .video-card .video-poster {
+    width: 100%;
+    height: 480px;
+    display: block;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .video-card .video-poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .video-card video {
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .video-card video.is-ready {
+    opacity: 1;
+  }
+
+  .video-info {
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  .video-title {
+    color: #000;
+    font-family: 'ABC Diatype', sans-serif !important;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    font-size: 16px;
+  }
+
+  .video-subtitle {
+    color: #2e2e2e;
+    font-size: 15px;
+    font-family: 'Austin News Deck', sans-serif !important;
+  }
+
+  .video-card-buy-btn {
+    position: absolute;
+    bottom: 20px;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: 'ABC Diatype', sans-serif !important;
+    padding: 5px 10px;
+  }
+
+  .modal-video {
+    height: 600px !important;
+    min-width: 300px;
+    object-fit: cover;
+  }
+
+  .play-btn {
+    color: white;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .video-container {
+    position: relative;
+    width: 320px;
+    min-width: 320px;
+  }
+
+  .video-container:hover .play-btn {
+    display: none;
+  }
+
+  .section-shopify-title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .section-shopify-title .section-duo-subtitle {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  .section-shopify-title .section-duo-title {
+    font-size: 20px;
+  }
+
+  /* =========================
+     SWIPER
+  ========================= */
+
+  .reels-swiper-wrap {
+    padding-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reels-swiper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reels-swiper .swiper-wrapper {
+    align-items: flex-start;
+  }
+
+  .reels-swiper .swiper-slide {
+    width: 320px;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* =========================
+     PAGINATION
+  ========================= */
+
+  .reels-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .reels-pagination .swiper-pagination-bullet {
+    width: 13px;
+    height: 13px;
+    opacity: 0.3;
+    background: #fff !important;
+    box-shadow: 0px 0px 5px 1px #000000;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .reels-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #000 !important;
+    box-shadow: none !important;
+  }
+
+  /* =========================
+     FLÈCHES (style product-grid)
+  ========================= */
+
+  .product-grid__arrow {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #18466d;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .product-grid__arrow:hover {
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .product-grid__arrow.swiper-button-disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .product-grid__arrow--prev {
+    left: -8px;
+  }
+
+  .product-grid__arrow--next {
+    right: -8px;
+  }
+
+  .product-grid__arrow--prev .svg-wrapper {
+    transform: rotate(90deg);
+  }
+
+  .product-grid__arrow--next .svg-wrapper {
+    transform: rotate(-90deg);
+  }
+
+  .product-grid__arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* =========================
+     MOBILE
+  ========================= */
+
+  @media screen and (max-width: 768px) {
+    .home-reels {
+      width: 100%;
+      padding-bottom: 0;
+    }
+
+    .reels-swiper-wrap {
+      padding-bottom: 10px;
+    }
+
+    .modal-video {
+      height: 500px;
+      min-width: 280px;
+      object-fit: cover;
+    }
+
+    .video-card-buy-btn {
+      display: none;
+    }
+
+    .product-grid__arrow {
+      display: none;
+    }
+
+    .section-shopify-title .section-duo-subtitle {
+      font-size: 24px;
+    }
+
+    .section-shopify-title .section-duo-title {
+      font-size: 16px;
+    }
+
+    .section-shopify-title {
+      margin-top: 30px;
+    }
+
+    /*
+      Carousel scroll-snap natif,
+      aligné sur product-grid mobile.
+    */
+
+    .reels-swiper {
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .reels-swiper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .reels-swiper.dragging {
+      cursor: grabbing;
+      scroll-snap-type: none;
+    }
+
+    .reels-swiper.dragging .swiper-slide {
+      pointer-events: none;
+    }
+
+    .reels-swiper .swiper-wrapper {
+      justify-content: flex-start;
+      gap: 16px;
+    }
+
+    .reels-swiper .swiper-slide {
+      flex: 0 0 calc(85vw - 40px);
+      max-width: 320px;
+      width: auto !important;
+      min-width: 280px !important;
+
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
+      scroll-snap-align: start;
+    }
+
+    /*
+      Vidéo centrée
+    */
+
+    .video-container {
+      width: 100%;
+      min-width: 280px;
+      max-width: 320px;
+      margin: 0;
+    }
+
+    .video-card video {
+      width: 100%;
+      height: 480px;
+    }
+
+    /*
+      Flèches et pagination masquées :
+      carousel natif au toucher, comme product-grid.
+    */
+
+    .reels-pagination {
+      display: none;
+    }
+  }
+</style>
+
+<div class="home-reels">
+  <div class="section-shopify-title">
+    {% if section.settings.subTitle != blank %}
+      <p class="section-duo-subtitle">
+        {{ section.settings.subTitle }}
+      </p>
+    {% endif %}
+
+    <div class="section-duo-title">
+      {{ section.settings.mainTitle }}
+    </div>
+  </div>
+
+  <div class="reels-swiper-wrap">
+    <div class="reels-swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% assign video = block.settings.video %}
+          {% assign poster = video.preview_image.src %}
+
+          <div
+            class="swiper-slide"
+            {{ block.shopify_attributes }}
+          >
+            <div class="video-container">
+              <!-- PLAY -->
+
+              <div class="play-btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm14.024-.983a1.125 1.125 0 0 1 0 1.966l-5.603 3.113A1.125 1.125 0 0 1 9 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113Z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+
+              <!-- VIDEO -->
+
+              <div class="video-card">
+                {% if poster != blank %}
+                  <img
+                    class="video-poster"
+                    src="{{ poster | image_url: width: 400 }}"
+                    alt=""
+                    loading="lazy"
+                    width="320"
+                    height="480"
+                  >
+                {% endif %}
+
+                {{
+                  video
+                  | video_tag:
+                    autoplay: false,
+                    loop: true,
+                    muted: true,
+                    controls: false,
+                    poster: poster,
+                    preload: 'none',
+                    class: 'lazy-reel-video',
+                    image_size: '400x'
+                }}
+
+                <a href="{{ block.settings.cta_link }}">
+                  <div class="video-card-buy-btn">
+                    <button>ACHETER CE PRODUIT (1 PRODUIT)</button>
+
+                    <div class="video-price">{{ block.settings.price }} €</div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- INFOS -->
+
+              <div class="video-info">
+                <div class="video-title">
+                  {{ block.settings.title }}
+                </div>
+
+                <div class="video-subtitle">
+                  {{ block.settings.subtitle }}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- FLÈCHES -->
+
+      <button
+        type="button"
+        class="product-grid__arrow product-grid__arrow--prev reels-nav-prev"
+        aria-label="Précédent"
+      >
+        <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+      </button>
+
+      <button
+        type="button"
+        class="product-grid__arrow product-grid__arrow--next reels-nav-next"
+        aria-label="Suivant"
+      >
+        <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+      </button>
+    </div>
+
+    <!-- PAGINATION -->
+
+    <div class="reels-pagination"></div>
+  </div>
+</div>
+
+<!--
+  =========================
+       MODALE
+  =========================
+-->
+
+<div
+  id="video-modal"
+  style="
+    display:none;
+    position:fixed;
+    z-index:9999;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    align-items:center;
+    justify-content:center;
+  "
+>
+  <div
+    style="
+      position:relative;
+      max-width:800px;
+    "
+  >
+    <video
+      class="modal-video"
+      id="modal-video"
+      autoplay
+      loop
+      style="
+        width:100%;
+        border-radius:10px;
+      "
+      muted
+      playsinline
+    ></video>
+
+    <!-- SOUND -->
+
+    <button
+      id="toggle-sound"
+      style="
+        position:absolute;
+        top:20px;
+        left:20px;
+        cursor:pointer;
+        background:none;
+        border:none;
+      "
+    >
+      <span class="icon-muted">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="white"
+          width="32"
+          height="32"
+        >
+          <path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 0 0 1.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06ZM17.78 9.22a.75.75 0 1 0-1.06 1.06L18.44 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06l1.72-1.72 1.72 1.72a.75.75 0 1 0 1.06-1.06L20.56 12l1.72-1.72a.75.75 0 0 0-1.06-1.06l-1.72 1.72-1.72-1.72Z"></path>
+        </svg>
+      </span>
+
+      <span
+        class="icon-unmuted"
+        style="display:none;"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="white"
+          width="32"
+          height="32"
+        >
+          <path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 0 0 1.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 9.98 0 13.788a.75.75 0 0 1-1.06-1.06 8.25 8.25 0 0 0 0-11.668.75.75 0 0 1 0-1.06Z"></path>
+
+          <path d="M15.932 7.757a.75.75 0 0 1 1.061 0 6 6 0 0 1 0 8.486.75.75 0 0 1-1.06-1.061 4.5 4.5 0 0 0 0-6.364.75.75 0 0 1 0-1.06Z"></path>
+        </svg>
+      </span>
+    </button>
+
+    <!-- CLOSE -->
+
+    <button
+      id="close-modal"
+      style="
+        position:absolute;
+        top:20px;
+        right:20px;
+        color:#fff;
+        cursor:pointer;
+        font-family:'ABC Diatype', sans-serif;
+        text-transform:uppercase;
+        font-size:15px;
+        background:none;
+        border:none;
+      "
+    >
+      <img
+        src="{{ 'close.svg' | asset_url }}"
+        alt="icon close"
+        style="width:40px"
+      >
+    </button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const isDesktop = () => window.innerWidth > 768;
+
+    const swiperEl = document.querySelector('.reels-swiper');
+
+    let heroReels = null;
+
+    /* =========================
+       SWIPER (DESKTOP UNIQUEMENT)
+    ========================= */
+
+    function initSwiper() {
+      if (heroReels) return;
+
+      heroReels = new Swiper('.reels-swiper', {
+        slidesPerView: 'auto',
+
+        spaceBetween: 10,
+
+        centeredSlides: false,
+
+        loop: false,
+
+        observer: true,
+
+        observeParents: true,
+
+        navigation: {
+          nextEl: '.reels-nav-next',
+
+          prevEl: '.reels-nav-prev',
+        },
+
+        pagination: {
+          el: '.reels-pagination',
+
+          clickable: true,
+        },
+      });
+
+      setTimeout(centerReelsIfNeeded, 100);
+    }
+
+    function destroySwiper() {
+      if (!heroReels) return;
+
+      heroReels.destroy(true, true);
+
+      heroReels = null;
+
+      swiperEl.querySelector('.swiper-wrapper').style.justifyContent = '';
+    }
+
+    /* =========================
+       CENTRAGE DESKTOP
+       Centre les vidéos si elles
+       ne remplissent pas la largeur.
+    ========================= */
+
+    function centerReelsIfNeeded() {
+      if (!isDesktop()) return;
+
+      const wrapper = swiperEl.querySelector('.swiper-wrapper');
+
+      const slides = wrapper.querySelectorAll('.swiper-slide');
+
+      if (!slides.length) return;
+
+      let totalWidth = 0;
+
+      slides.forEach(function (slide) {
+        totalWidth += slide.offsetWidth;
+      });
+
+      totalWidth += (slides.length - 1) * 10;
+
+      const availableWidth = swiperEl.clientWidth;
+
+      wrapper.style.justifyContent = totalWidth < availableWidth ? 'center' : 'flex-start';
+    }
+
+    /* =========================
+       CAROUSEL NATIF (MOBILE)
+       aligné sur product-grid
+    ========================= */
+
+    let isDown = false;
+    let mouseMoved = false;
+    let startX;
+    let scrollLeft;
+
+    function onMouseDown(e) {
+      if (isDesktop()) return;
+
+      isDown = true;
+      mouseMoved = false;
+      startX = e.pageX - swiperEl.offsetLeft;
+      scrollLeft = swiperEl.scrollLeft;
+    }
+
+    function onMouseLeave() {
+      isDown = false;
+      swiperEl.classList.remove('dragging');
+    }
+
+    function onMouseUp() {
+      isDown = false;
+      swiperEl.classList.remove('dragging');
+    }
+
+    function onMouseMove(e) {
+      if (!isDown) return;
+
+      const x = e.pageX - swiperEl.offsetLeft;
+      const walk = (x - startX) * 2;
+
+      if (Math.abs(x - startX) > 5) {
+        mouseMoved = true;
+        swiperEl.classList.add('dragging');
+      }
+
+      if (!mouseMoved) return;
+
+      e.preventDefault();
+      swiperEl.scrollLeft = scrollLeft - walk;
+    }
+
+    let touchStartX = 0;
+    let touchScrollLeft = 0;
+    let touchMoved = false;
+
+    function onTouchStart(e) {
+      if (isDesktop()) return;
+
+      touchStartX = e.touches[0].pageX - swiperEl.offsetLeft;
+      touchScrollLeft = swiperEl.scrollLeft;
+      touchMoved = false;
+    }
+
+    function onTouchMove(e) {
+      if (isDesktop()) return;
+
+      const x = e.touches[0].pageX - swiperEl.offsetLeft;
+      const walk = (x - touchStartX) * 2;
+
+      if (Math.abs(x - touchStartX) > 5) touchMoved = true;
+
+      swiperEl.scrollLeft = touchScrollLeft - walk;
+    }
+
+    function onTouchEnd(e) {
+      if (touchMoved) {
+        const link = e.target.closest('a');
+
+        if (link) {
+          e.preventDefault();
+        }
+      }
+
+      touchMoved = false;
+    }
+
+    swiperEl.addEventListener('mousedown', onMouseDown);
+    swiperEl.addEventListener('mouseleave', onMouseLeave);
+    swiperEl.addEventListener('mouseup', onMouseUp);
+    swiperEl.addEventListener('mousemove', onMouseMove);
+    swiperEl.addEventListener('touchstart', onTouchStart, { passive: true });
+    swiperEl.addEventListener('touchmove', onTouchMove, { passive: true });
+    swiperEl.addEventListener('touchend', onTouchEnd);
+
+    /* =========================
+       BASCULE DESKTOP / MOBILE
+    ========================= */
+
+    function syncMode() {
+      if (isDesktop()) {
+        initSwiper();
+
+        heroReels.update();
+
+        centerReelsIfNeeded();
+      } else {
+        destroySwiper();
+      }
+    }
+
+    syncMode();
+
+    let resizeTimer;
+
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+
+      resizeTimer = setTimeout(syncMode, 150);
+    });
+
+    /* =========================
+       MODALE
+    ========================= */
+
+    const modal = document.getElementById('video-modal');
+
+    const modalVideo = document.getElementById('modal-video');
+
+    const toggleSoundBtn = document.getElementById('toggle-sound');
+
+    const closeModalBtn = document.getElementById('close-modal');
+
+    document.querySelectorAll('.video-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        const video = card.querySelector('video');
+
+        const src = video.currentSrc || video.querySelector('source')?.src;
+
+        if (!src) return;
+
+        modal.style.display = 'flex';
+
+        modalVideo.src = src;
+
+        modalVideo.muted = true;
+
+        modalVideo.play();
+
+        toggleSoundBtn.querySelector('.icon-muted').style.display = 'inline';
+
+        toggleSoundBtn.querySelector('.icon-unmuted').style.display = 'none';
+      });
+    });
+
+    /* =========================
+       SON
+    ========================= */
+
+    toggleSoundBtn.addEventListener('click', () => {
+      modalVideo.muted = !modalVideo.muted;
+
+      const iconMuted = toggleSoundBtn.querySelector('.icon-muted');
+
+      const iconUnmuted = toggleSoundBtn.querySelector('.icon-unmuted');
+
+      if (modalVideo.muted) {
+        iconMuted.style.display = 'inline';
+
+        iconUnmuted.style.display = 'none';
+      } else {
+        iconMuted.style.display = 'none';
+
+        iconUnmuted.style.display = 'inline';
+      }
+    });
+
+    /* =========================
+       FERMETURE MODALE
+    ========================= */
+
+    closeModalBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+
+      modalVideo.pause();
+
+      modalVideo.src = '';
+    });
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+
+        modalVideo.pause();
+
+        modalVideo.src = '';
+      }
+    });
+
+    /* =========================
+       LAZY LOAD + AUTOPLAY
+       Charge la vidéo seulement
+       à l'approche du viewport,
+       ne joue que celle visible.
+    ========================= */
+
+    const allVideos = Array.from(document.querySelectorAll('.video-card video'));
+
+    function loadVideoSrc(video) {
+      if (video.dataset.loaded) return;
+
+      video.dataset.loaded = 'true';
+
+      video.load();
+    }
+
+    const loadObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadVideoSrc(entry.target);
+          }
+        });
+      },
+      { rootMargin: '200px' },
+    );
+
+    const playObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+            loadVideoSrc(entry.target);
+            entry.target.play().catch(() => {});
+          } else {
+            entry.target.pause();
+          }
+        });
+      },
+      { threshold: [0, 0.6, 1] },
+    );
+
+    allVideos.forEach((video) => {
+      video.muted = true;
+
+      video.addEventListener('canplay', () => {
+        video.classList.add('is-ready');
+      });
+
+      loadObserver.observe(video);
+      playObserver.observe(video);
+    });
+
+    /* =========================
+       HOVER (DESKTOP)
+    ========================= */
+
+    allVideos.forEach((video, i) => {
+      const container = video.closest('.video-container');
+
+      const playBtn = container.querySelector('.play-btn');
+
+      container.addEventListener('mouseenter', () => {
+        if (!isDesktop()) return;
+
+        allVideos.forEach((v, vi) => {
+          if (vi !== i) {
+            v.pause();
+          }
+        });
+
+        if (playBtn) {
+          playBtn.style.display = 'none';
+        }
+
+        loadVideoSrc(video);
+        video.play().catch(() => {});
+      });
+
+      container.addEventListener('mouseleave', () => {
+        if (!isDesktop()) return;
+
+        if (playBtn) {
+          playBtn.style.display = 'block';
+        }
+
+        video.pause();
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Vidéos Produits",
+
+  "settings": [
+    {
+      "type": "text",
+      "id": "subTitle",
+      "label": "Sous-titre",
+      "default": "Explore les possibilités"
+    },
+
+    {
+      "type": "richtext",
+      "id": "mainTitle",
+      "label": "Titre principal"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "video_product",
+
+      "name": "Vidéo Produit",
+
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Vidéo Shopify"
+        },
+
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Nom du produit",
+          "default": "Nom du produit"
+        },
+
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Sous-titre",
+          "default": "Sous-titre"
+        },
+
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Prix",
+          "default": "20"
+        },
+
+        {
+          "type": "url",
+          "id": "cta_link",
+          "label": "Lien du bouton"
+        }
+      ]
+    }
+  ],
+
+  "max_blocks": 10,
+
+  "presets": [
+    {
+      "name": "Vidéos produits",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

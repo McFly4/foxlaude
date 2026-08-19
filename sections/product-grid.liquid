@@ -1,0 +1,373 @@
+{% liquid
+  assign block_count = section.blocks.size
+  assign use_carousel = false
+  if block_count > 4
+    assign use_carousel = true
+  endif
+%}
+
+<div class="product-grid-section" data-section-id="{{ section.id }}">
+  {% if section.settings.title != blank %}
+    <h2 class="product-grid-title">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  <div class="product-grid-container{% if use_carousel %} product-grid-container--carousel{% endif %}">
+    {% if use_carousel %}
+      <button type="button" class="product-grid__arrow product-grid__arrow--prev" aria-label="Précédent" disabled>
+        <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+      </button>
+      <button type="button" class="product-grid__arrow product-grid__arrow--next" aria-label="Suivant">
+        <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+      </button>
+    {% endif %}
+    <div class="product-grid" id="product-grid-{{ section.id }}">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-grid-section {
+    padding: 60px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .product-grid-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #000;
+  }
+
+  .product-grid-container {
+    position: relative;
+    min-width: 0;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .product-grid .resource-list__item {
+    height: 100%;
+  }
+
+  /* Carousel mode (> 4 products) */
+  .product-grid-container--carousel .product-grid {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .product-grid-container--carousel .product-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-grid-container--carousel .product-grid.dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+  }
+
+  .product-grid-container--carousel .product-grid.dragging .resource-list__item {
+    pointer-events: none;
+  }
+
+  .product-grid-container--carousel .product-grid .resource-list__item {
+    flex: 0 0 calc(25% - 18px);
+    min-width: 260px;
+    scroll-snap-align: start;
+  }
+
+  .product-grid__arrow {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #18466d;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .product-grid__arrow:hover {
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .product-grid__arrow[disabled] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .product-grid__arrow--prev {
+    left: -8px;
+  }
+
+  .product-grid__arrow--next {
+    right: -8px;
+  }
+
+  .product-grid__arrow--prev .svg-wrapper {
+    transform: rotate(90deg);
+  }
+
+  .product-grid__arrow--next .svg-wrapper {
+    transform: rotate(-90deg);
+  }
+
+  .product-grid__arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Responsive - Mobile */
+  @media (max-width: 768px) {
+    .product-grid-section {
+      padding: 40px 0;
+    }
+
+    .product-grid-title {
+      padding: 0 20px;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+    }
+
+    .product-grid-container {
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 0 20px;
+    }
+
+    .product-grid-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .product-grid-container--carousel .product-grid__arrow {
+      display: none;
+    }
+
+    .product-grid {
+      display: flex;
+      gap: 16px;
+      scroll-snap-type: x mandatory;
+      cursor: grab;
+      user-select: none;
+      padding-bottom: 10px;
+    }
+
+    .product-grid.dragging {
+      cursor: grabbing;
+      scroll-snap-type: none;
+    }
+
+    .product-grid.dragging .resource-list__item {
+      pointer-events: none;
+    }
+
+    .product-grid .resource-list__item,
+    .product-grid-container--carousel .product-grid .resource-list__item {
+      flex: 0 0 calc(85vw - 40px);
+      max-width: 320px;
+      scroll-snap-align: start;
+    }
+  }
+
+  /* Tablet */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .product-grid-container:not(.product-grid-container--carousel) .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .product-grid-container--carousel .product-grid .resource-list__item {
+      flex-basis: calc(50% - 10px);
+    }
+
+    .product-grid-section {
+      padding: 50px 20px;
+    }
+  }
+
+  /* Petits écrans desktop */
+  @media (min-width: 1025px) and (max-width: 1200px) {
+    .product-grid-container:not(.product-grid-container--carousel) .product-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-grid-container--carousel .product-grid .resource-list__item {
+      flex-basis: calc(33.333% - 16px);
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    const container = section.querySelector('.product-grid-container');
+    const grid = section.querySelector('.product-grid');
+    if (!grid) return;
+
+    const isCarousel = container.classList.contains('product-grid-container--carousel');
+    const prevBtn = section.querySelector('.product-grid__arrow--prev');
+    const nextBtn = section.querySelector('.product-grid__arrow--next');
+
+    function updateArrows() {
+      if (!prevBtn || !nextBtn) return;
+      const maxScroll = grid.scrollWidth - grid.clientWidth;
+      prevBtn.disabled = grid.scrollLeft <= 4;
+      nextBtn.disabled = grid.scrollLeft >= maxScroll - 4;
+    }
+
+    if (isCarousel && prevBtn && nextBtn) {
+      const scrollByAmount = () => grid.querySelector('.resource-list__item')?.offsetWidth + 24 || 300;
+
+      prevBtn.addEventListener('click', () => {
+        grid.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        grid.scrollBy({ left: scrollByAmount(), behavior: 'smooth' });
+      });
+
+      grid.addEventListener('scroll', updateArrows, { passive: true });
+      window.addEventListener('resize', updateArrows);
+      updateArrows();
+    }
+
+    // Gestion du drag (desktop en mode carousel, mobile toujours)
+    let isDown = false;
+    let mouseMoved = false;
+    let startX;
+    let scrollLeft;
+
+    grid.addEventListener('mousedown', (e) => {
+      if (!isCarousel && window.innerWidth > 768) return;
+      isDown = true;
+      mouseMoved = false;
+      startX = e.pageX - grid.offsetLeft;
+      scrollLeft = grid.scrollLeft;
+    });
+
+    grid.addEventListener('mouseleave', () => {
+      isDown = false;
+      grid.classList.remove('dragging');
+    });
+
+    grid.addEventListener('mouseup', () => {
+      isDown = false;
+      grid.classList.remove('dragging');
+    });
+
+    grid.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      const x = e.pageX - grid.offsetLeft;
+      const walk = (x - startX) * 2;
+      if (Math.abs(x - startX) > 5) {
+        mouseMoved = true;
+        grid.classList.add('dragging');
+      }
+      if (!mouseMoved) return;
+      e.preventDefault();
+      grid.scrollLeft = scrollLeft - walk;
+    });
+
+    // Bloque le clic sur les liens uniquement si un vrai drag a eu lieu
+    grid.addEventListener(
+      'click',
+      (e) => {
+        if (mouseMoved) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      },
+      { capture: true },
+    );
+
+    // Touch events pour mobile
+    let touchStartX = 0;
+    let touchScrollLeft = 0;
+    let touchMoved = false;
+
+    grid.addEventListener(
+      'touchstart',
+      (e) => {
+        touchStartX = e.touches[0].pageX - grid.offsetLeft;
+        touchScrollLeft = grid.scrollLeft;
+        touchMoved = false;
+      },
+      { passive: true },
+    );
+
+    grid.addEventListener(
+      'touchmove',
+      (e) => {
+        const x = e.touches[0].pageX - grid.offsetLeft;
+        const walk = (x - touchStartX) * 2;
+        if (Math.abs(x - touchStartX) > 5) touchMoved = true;
+        grid.scrollLeft = touchScrollLeft - walk;
+      },
+      { passive: true },
+    );
+
+    grid.addEventListener('touchend', (e) => {
+      if (touchMoved) {
+        const link = e.target.closest('a');
+        if (link) {
+          e.preventDefault();
+        }
+      }
+      touchMoved = false;
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre de la section",
+      "default": "Les essentiels FoxLaude"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "LL-product-grid-item"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Grid",
+      "blocks": [
+        { "type": "LL-product-grid-item" },
+        { "type": "LL-product-grid-item" },
+        { "type": "LL-product-grid-item" },
+        { "type": "LL-product-grid-item" }
+      ]
+    }
+  ]
+}
+{% endschema %}

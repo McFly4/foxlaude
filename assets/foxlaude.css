@@ -1,0 +1,29 @@
+:root {
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+    --space-8: 64px;
+    --space-9: 96px;
+    --space-10: 128px;
+
+    --fs-xs:   14px;  /* mentions légales, labels */
+    --fs-sm:   16px;  /* texte courant, boutons */
+    --fs-md:   18px;  /* intro/chapô, sous-titres */
+    --fs-lg:   22px;  /* H4 */
+    --fs-xl:   28px;  /* H3 */
+    --fs-2xl:  36px;  /* H2 */
+    --fs-3xl:  48px;  /* H1 (pages internes) */
+    --fs-hero: 56px;  /* H1 hero home, desktop */
+
+    /* mobile (<750px) : on redescend d'un cran */
+    --fs-2xl-mobile: 28px;
+    --fs-3xl-mobile: 32px;
+    --fs-hero-mobile: 36px;
+}
+
+{{ 'fraunces-variable.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+{{ 'satoshi-variable.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}

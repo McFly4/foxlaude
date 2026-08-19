@@ -1,0 +1,173 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer_m9NzUG": {
+      "type": "footer",
+      "blocks": {
+        "social_icon_mdHbCi": {
+          "type": "social_icon",
+          "settings": {
+            "icon": "shopify://shop_images/instagram.svg",
+            "link": "https://www.instagram.com/foxlaude/",
+            "label": "Instagram"
+          }
+        },
+        "social_icon_p7fech": {
+          "type": "social_icon",
+          "settings": {
+            "icon": "shopify://shop_images/facebook.svg",
+            "link": "https://www.tiktok.com/@fox.laude",
+            "label": "Tiktok"
+          }
+        },
+        "social_icon_cpKjQa": {
+          "type": "social_icon",
+          "disabled": true,
+          "settings": {
+            "icon": "shopify://shop_images/youtube.svg",
+            "link": "",
+            "label": "Instagram"
+          }
+        },
+        "social_icon_QYk33M": {
+          "type": "social_icon",
+          "disabled": true,
+          "settings": {
+            "icon": "shopify://shop_images/linkedin.svg",
+            "link": "",
+            "label": "Instagram"
+          }
+        },
+        "reassurance_item_eDjmgJ": {
+          "type": "reassurance_item",
+          "settings": {
+            "icon": "shopify://shop_images/FoxLaude_Group_60c0aed7-af14-4385-ba3c-71d6b6087a0f.svg",
+            "title": "Testé et approuvé",
+            "description": "Adopté par +300 étudiants"
+          }
+        },
+        "reassurance_item_qfjBPB": {
+          "type": "reassurance_item",
+          "settings": {
+            "icon": "shopify://shop_images/FoxLaude_Group_1_40d424e4-fb2c-4adc-a5c9-c62b3dd5bf44.svg",
+            "title": "Écologique et économique",
+            "description": "Alternative durable aux brouillons"
+          }
+        },
+        "reassurance_item_iCG7bH": {
+          "type": "reassurance_item",
+          "settings": {
+            "icon": "shopify://shop_images/FoxLaude_Group_2_94fbec5c-f395-4826-8b09-55486a4a6f0c.svg",
+            "title": "Innovation française",
+            "description": "Premier cahier ardoise scannable au monde"
+          }
+        },
+        "reassurance_item_Mpqm83": {
+          "type": "reassurance_item",
+          "settings": {
+            "icon": "shopify://shop_images/FoxLaude_Group_1_40d424e4-fb2c-4adc-a5c9-c62b3dd5bf44.svg",
+            "title": "5% des bénéfices reversés",
+            "description": "Pour l'éducation dans les pays en développement"
+          }
+        },
+        "instagram_image_DGNbch": {
+          "type": "instagram_image",
+          "settings": {
+            "image": "shopify://shop_images/STYLO_FOXLAUDE.png",
+            "link": ""
+          }
+        },
+        "instagram_image_WfcbkJ": {
+          "type": "instagram_image",
+          "settings": {
+            "image": "shopify://shop_images/CAHIER_BLANC_FOXLAUDE.png",
+            "link": ""
+          }
+        },
+        "instagram_image_Te44T9": {
+          "type": "instagram_image",
+          "settings": {
+            "image": "shopify://shop_images/full_set_foxlaude.png",
+            "link": ""
+          }
+        },
+        "instagram_image_gYMpTt": {
+          "type": "instagram_image",
+          "settings": {
+            "image": "shopify://shop_images/pack_couleur_foxlaude.png",
+            "link": ""
+          }
+        },
+        "instagram_image_VYfJBi": {
+          "type": "instagram_image",
+          "settings": {
+            "image": "shopify://shop_images/Foxlaude_cahier_mouiller.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "social_icon_mdHbCi",
+        "social_icon_p7fech",
+        "social_icon_cpKjQa",
+        "social_icon_QYk33M",
+        "reassurance_item_eDjmgJ",
+        "reassurance_item_qfjBPB",
+        "reassurance_item_iCG7bH",
+        "reassurance_item_Mpqm83",
+        "instagram_image_DGNbch",
+        "instagram_image_WfcbkJ",
+        "instagram_image_Te44T9",
+        "instagram_image_gYMpTt",
+        "instagram_image_VYfJBi"
+      ],
+      "name": "t:names.footer",
+      "settings": {
+        "instagram_enable": true,
+        "instagram_title": "Retrouvez nous sur instagram",
+        "instagram_subtitle": "<p>+ de 100 abonnées sur <a href=\"https://www.instagram.com/foxlaude/\" target=\"_blank\" title=\"https://www.instagram.com/foxlaude/\"><strong>@FoxLaude</strong></a></p>",
+        "social_pill_color": "#bedaf4",
+        "social_icon_size": 28,
+        "reassurance_enable": true
+      }
+    },
+    "LL-footer-main": {
+      "type": "LL-footer-main",
+      "settings": {
+        "bg_color": "#18466d",
+        "text_color": "#ffffff",
+        "btn_color": "#9bbed9",
+        "btn_text_color": "#ffffff",
+        "logo": "shopify://shop_images/Copy_of_All_logo_3.svg",
+        "nav_menu": "main-menu",
+        "newsletter_title": "Recevez -10% offerts sur votre première commande",
+        "newsletter_desc": "Inscrivez-vous à la newsletter et recevez immédiatement -10% offerts sur votre première commande",
+        "input_placeholder": "E-mail",
+        "btn_label": "Je m'inscris",
+        "legal_label_1": "Mentions Légales",
+        "legal_url_1": "",
+        "legal_label_2": "Politiques de confidentialité",
+        "legal_url_2": "",
+        "legal_label_3": "Conditions générales de ventes",
+        "legal_url_3": "",
+        "legal_label_4": "",
+        "legal_url_4": "",
+        "copyright_text": "© 2026, FoxLaude"
+      }
+    }
+  },
+  "order": [
+    "footer_m9NzUG",
+    "LL-footer-main"
+  ]
+}

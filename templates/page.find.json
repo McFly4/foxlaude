@@ -1,0 +1,52 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ll-find-stores": {
+      "type": "LL-find-stores",
+      "blocks": {
+        "store-1": {
+          "type": "store",
+          "disabled": true,
+          "settings": {
+            "name": "Librairie XYZ",
+            "address": "12 rue de la Paix\n75001 Paris"
+          }
+        },
+        "store-2": {
+          "type": "store",
+          "disabled": true,
+          "settings": {
+            "name": "Librairie XYZ",
+            "address": "12 rue de la Paix\n75001 Paris"
+          }
+        },
+        "store-3": {
+          "type": "store",
+          "settings": {
+            "name": "A venir ...",
+            "address": "Paris"
+          }
+        }
+      },
+      "block_order": [
+        "store-1",
+        "store-2",
+        "store-3"
+      ],
+      "settings": {
+        "title": "Où nous trouver"
+      }
+    }
+  },
+  "order": [
+    "ll-find-stores"
+  ]
+}

@@ -1,0 +1,237 @@
+<style>
+  .home-grid {
+    width: 100%;
+    max-height: 750px;
+    overflow: hidden;
+  }
+
+  .home-grid__container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 100%;
+    height: 750px;
+    gap: 10px;
+  }
+
+  .home-grid__item {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .home-grid__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .home-grid__item--placeholder {
+    background-color: #f3f3f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home-grid__item--placeholder svg {
+    width: 100%;
+    height: 100%;
+    max-width: 150px;
+    opacity: 0.3;
+  }
+
+  /* Grid Areas Desktop */
+  .home-grid__item-1 {
+    grid-area: 1 / 1 / 4 / 3;
+  }
+
+  .home-grid__item-2 {
+    grid-area: 1 / 3 / 4 / 5;
+  }
+
+  .home-grid__item-3 {
+    grid-area: 1 / 5 / 2 / 7;
+  }
+
+  .home-grid__item-4 {
+    grid-area: 2 / 5 / 3 / 6;
+  }
+
+  .home-grid__item-5 {
+    grid-area: 2 / 6 / 3 / 7;
+  }
+
+  .home-grid__item-6 {
+    grid-area: 3 / 5 / 4 / 6;
+  }
+
+  .home-grid__item-7 {
+    grid-area: 3 / 6 / 4 / 7;
+  }
+
+  /* Responsive Mobile */
+  @media screen and (max-width: 989px) {
+    .home-grid {
+      max-height: none;
+    }
+
+    .home-grid__container {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      height: auto;
+      min-height: 1200px;
+    }
+
+    .home-grid__item-1 {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+
+    .home-grid__item-2 {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+
+    .home-grid__item-3 {
+      grid-area: 3 / 1 / 4 / 2;
+    }
+
+    .home-grid__item-4 {
+      grid-area: 3 / 2 / 4 / 3;
+    }
+
+    .home-grid__item-5 {
+      grid-area: 1 / 1 / 2 / 3;
+    }
+
+    .home-grid__item-6 {
+      grid-area: 4 / 1 / 6 / 3;
+    }
+
+    .home-grid__item-7 {
+      grid-area: 6 / 1 / 7 / 3;
+    }
+  }
+
+  /* Responsive Mobile */
+  @media screen and (max-width: 989px) {
+    .home-grid {
+      max-height: none;
+    }
+
+    .home-grid__container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 350px 250px 180px 180px;
+      height: auto;
+      gap: 4px;
+    }
+
+    /* Première rangée - 1 et 2 côte à côte (350px) */
+    .home-grid__item-1 {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+
+    .home-grid__item-2 {
+      grid-area: 1 / 2 / 2 / 3;
+    }
+
+    /* Deuxième rangée - 3 pleine largeur (250px) */
+    .home-grid__item-3 {
+      grid-area: 2 / 1 / 3 / 3;
+    }
+
+    /* Troisième rangée - 4 et 5 côte à côte (180px) */
+    .home-grid__item-4 {
+      grid-area: 3 / 1 / 4 / 2;
+    }
+
+    .home-grid__item-5 {
+      grid-area: 3 / 2 / 4 / 3;
+    }
+
+    /* Quatrième rangée - 6 et 7 côte à côte (180px) */
+    .home-grid__item-6 {
+      grid-area: 4 / 1 / 5 / 2;
+    }
+
+    .home-grid__item-7 {
+      grid-area: 4 / 2 / 5 / 3;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .home-grid__container {
+      min-height: unset;
+      grid-template-rows: 350px 250px 180px 180px;
+    }
+  }
+</style>
+
+<div class="home-grid">
+  <div class="home-grid__container">
+    {% for block in section.blocks limit: 7 %}
+      <div class="home-grid__item home-grid__item-{{ forloop.index }}" {{ block.shopify_attributes }}>
+        {% if block.settings.image != blank %}
+          {{
+            block.settings.image
+            | image_url: width: 1200
+            | image_tag: loading: 'lazy', widths: '375, 550, 750, 1100, 1200', alt: block.settings.image.alt
+            | escape
+          }}
+        {% else %}
+          <div class="home-grid__item--placeholder">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Home Grid",
+  "tag": "section",
+  "max_blocks": 7,
+  "blocks": [
+    {
+      "type": "grid_image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Grid",
+      "blocks": [
+        {
+          "type": "grid_image"
+        },
+        {
+          "type": "grid_image"
+        },
+        {
+          "type": "grid_image"
+        },
+        {
+          "type": "grid_image"
+        },
+        {
+          "type": "grid_image"
+        },
+        {
+          "type": "grid_image"
+        },
+        {
+          "type": "grid_image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

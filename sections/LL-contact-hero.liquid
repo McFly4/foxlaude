@@ -1,0 +1,838 @@
+<style>
+  .llch {
+    width: 100%;
+    font-family: Futura, "FuturaPT", sans-serif;
+  }
+
+  /* ── Hero banner ── */
+  .llch-hero {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    min-height: 320px;
+    overflow: hidden;
+  }
+
+  .llch-hero__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: {{ section.settings.hero_image_position }};
+  }
+
+  .llch-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(0,0,0,{{ section.settings.overlay_opacity | divided_by: 100.0 }}) 0%,
+      rgba(0,0,0,{{ section.settings.overlay_opacity | divided_by: 200.0 }}) 60%,
+      rgba(0,0,0,0) 100%
+    );
+  }
+
+  .llch-hero__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 60px;
+    max-width: 640px;
+    gap: 20px;
+  }
+
+  .llch-hero__stars {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .llch-hero__stars-icons {
+    display: flex;
+    gap: 2px;
+  }
+
+  .llch-hero__stars-icons svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .llch-hero__stars-label {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .llch-hero__title {
+    color: #fff;
+    font-size: clamp(24px, 3.5vw, 44px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+  }
+
+  .llch-hero__ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .llch-hero__cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    font-family: Futura, "FuturaPT", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .llch-hero__cta--primary {
+    background: {{ section.settings.cta1_color }};
+    color: {{ section.settings.cta1_text_color }};
+    border-color: {{ section.settings.cta1_color }};
+  }
+
+  .llch-hero__cta--secondary {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255,255,255,0.7);
+  }
+
+
+  /* ── Below hero ── */
+  .llch-below {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+
+  /* Texte intro */
+  .llch-intro-text {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #000;
+    text-align: center;
+    max-width: 680px;
+  }
+
+  /* Texte intro */
+  .llch-intro-text h3{
+    font-weight: 400;
+  }
+
+
+  .llch-intro-text p {
+    margin: 0 0 12px;
+  }
+
+  .llch-intro-text p:last-child {
+    margin: 0;
+  }
+
+  /* Logo marquee */
+  .llch-logos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .llch-logos__track-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .llch-logos__fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 8rem;
+    pointer-events: none;
+  }
+
+  .llch-logos__fade--left {
+    left: 0;
+    background: linear-gradient(to right, #fff, transparent);
+  }
+
+  .llch-logos__fade--right {
+    right: 0;
+    background: linear-gradient(to left, #fff, transparent);
+  }
+
+  .llch-logos__track {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    gap: 60px;
+    animation: llch-marquee 40s linear infinite;
+  }
+
+  .llch-logos__separator {
+    height: 40px;
+    width: auto;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .llch-logos__track-wrapper:hover .llch-logos__track {
+    animation-play-state: paused;
+  }
+
+  .llch-logos__item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .llch-logos__item img {
+    height: auto;
+    max-height: 100px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    display: block;
+    cursor: pointer;
+  }
+
+  .llch-logos__item-text {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .llch-logos__clients {
+    font-size: 12px;
+    color: #000;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  @keyframes llch-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @media screen and (max-width: 749px) {
+    .llch-intro-text{
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .llch-values__title{
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .llch-logos__fade {
+      width: 2.5rem;
+    }
+
+    .llch-logos__track {
+      gap: 2.5rem;
+      animation-duration: 22s;
+    }
+
+    .llch-logos__separator {
+      height: 28px;
+    }
+
+    .llch-logos__item img {
+      max-height: 88px;
+      max-width: 150px;
+    }
+  }
+
+  /* Values section */
+  .llch-values {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+    margin-top: 40px;
+  }
+
+  .llch-values__title {
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin: 0;
+    text-align: center;
+    color: #111;
+  }
+
+  .llch-values__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    width: 100%;
+  }
+
+  .llch-value-card {
+    perspective: 1000px;
+    cursor: pointer;
+    min-height: 180px;
+  }
+
+  .llch-value-card__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 180px;
+    transform-style: preserve-3d;
+    transition: transform 0.55s ease;
+    border-radius: 24px;
+  }
+
+  .llch-value-card:hover .llch-value-card__inner {
+    transform: rotateY(180deg);
+  }
+
+  .llch-value-card__front,
+  .llch-value-card__back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 24px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid #efefef;
+  }
+
+  .llch-value-card__back {
+    transform: rotateY(180deg);
+    background: #f8f8f8;
+    justify-content: center;
+  }
+
+  .llch-value-card__icon {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .llch-value-card__title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #111;
+    margin: 0;
+  }
+
+  .llch-value-card__text {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #000;
+    margin: 0;
+  }
+
+  .llch-value-card__back-text {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #333;
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 989px) {
+    .llch-hero__content {
+      padding: 0 40px;
+    }
+
+    .llch-below {
+      padding: 50px 24px;
+    }
+
+    .llch-values__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .llch-logos__item {
+      padding: 10px 18px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .llch-hero {
+      height: 50vh;
+      min-height: 360px;
+    }
+
+    .llch-hero__content {
+      padding: 0 24px;
+      max-width: 100%;
+      gap: 16px;
+    }
+
+    .llch-hero__overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,{{ section.settings.overlay_opacity | divided_by: 100.0 }}) 0%,
+        rgba(0,0,0,{{ section.settings.overlay_opacity | divided_by: 150.0 }}) 100%
+      );
+    }
+
+    .llch-below {
+      padding: 40px 20px;
+      gap: 36px;
+    }
+
+    .llch-values__grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+  }
+</style>
+
+<div class="llch">
+  <!-- Hero banner -->
+  <div class="llch-hero">
+    {% if section.settings.hero_image != blank %}
+      {% assign hero_image_mobile = section.settings.hero_image_mobile | default: section.settings.hero_image %}
+      <picture>
+        <source media="(max-width: 749px)" srcset="{{ hero_image_mobile | image_url: width: 1000 }}">
+        <img
+          class="llch-hero__img"
+          src="{{ section.settings.hero_image | image_url: width: 2500 }}"
+          alt="{{ section.settings.hero_image.alt | escape }}"
+          width="1600"
+          height="640"
+          loading="eager"
+        >
+      </picture>
+    {% else %}
+      <div style="position:absolute;inset:0;background:#1a1a2e;"></div>
+    {% endif %}
+    <div class="llch-hero__overlay"></div>
+    <div class="llch-hero__content">
+      <!-- Stars + note -->
+      {% if section.settings.show_stars %}
+        <div class="llch-hero__stars">
+          <div class="llch-hero__stars-icons">
+            {% assign star_count = section.settings.star_count | round %}
+            {% for i in (1..5) %}
+              <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {% if i <= star_count %}
+                  <path d="M7 1L8.545 5.09H13L9.5 7.64L10.91 12L7 9.27L3.09 12L4.5 7.64L1 5.09H5.455L7 1Z" fill="#fff" stroke="#fff" stroke-width="0.5"/>
+                {% else %}
+                  <path d="M7 1L8.545 5.09H13L9.5 7.64L10.91 12L7 9.27L3.09 12L4.5 7.64L1 5.09H5.455L7 1Z" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+                {% endif %}
+              </svg>
+            {% endfor %}
+          </div>
+          {% if section.settings.stars_label != blank %}
+            <span class="llch-hero__stars-label">{{ section.settings.stars_label }}</span>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <!-- Title -->
+      {% if section.settings.hero_title != blank %}
+        <h1 class="llch-hero__title">{{ section.settings.hero_title }}</h1>
+      {% endif %}
+
+      <!-- CTAs -->
+      <div class="llch-hero__ctas">
+        {% if section.settings.cta1_label != blank %}
+          <a href="{{ section.settings.cta1_url }}" class="llch-hero__cta llch-hero__cta--primary">
+            {{ section.settings.cta1_label }}
+          </a>
+        {% endif %}
+        {% if section.settings.cta2_label != blank %}
+          <a href="{{ section.settings.cta2_url }}" class="llch-hero__cta llch-hero__cta--secondary">
+            {{ section.settings.cta2_label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Below hero -->
+  <div class="llch-below">
+    <!-- Texte intro -->
+    {% if section.settings.intro_text != blank %}
+      <div class="llch-intro-text">{{ section.settings.intro_text }}</div>
+    {% endif %}
+
+    <!-- Bandeau logos marquee -->
+    {% assign logo_blocks = section.blocks | where: 'type', 'logo' %}
+    {% if logo_blocks.size > 0 %}
+      <div class="llch-logos">
+        <div class="llch-logos__track-wrapper">
+          <div class="llch-logos__fade llch-logos__fade--left" aria-hidden="true"></div>
+          <div class="llch-logos__fade llch-logos__fade--right" aria-hidden="true"></div>
+          <div class="llch-logos__track">
+            {% for block in logo_blocks %}
+              <div class="llch-logos__item" {{ block.shopify_attributes }}>
+                {% if block.settings.logo_image != blank %}
+                  <img
+                    src="{{ block.settings.logo_image | image_url: width: 280 }}"
+                    alt="{{ block.settings.logo_alt | default: block.settings.logo_image.alt | escape }}"
+                    height="40"
+                    loading="lazy"
+                  >
+                {% elsif block.settings.logo_text != blank %}
+                  <span class="llch-logos__item-text">{{ block.settings.logo_text }}</span>
+                {% endif %}
+              </div>
+              <img
+                src="{{ 'separator.png' | asset_url }}"
+                class="llch-logos__separator"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              >
+            {% endfor %}
+            {% for block in logo_blocks %}
+              <div class="llch-logos__item" aria-hidden="true">
+                {% if block.settings.logo_image != blank %}
+                  <img
+                    src="{{ block.settings.logo_image | image_url: width: 280 }}"
+                    alt=""
+                    height="40"
+                    loading="lazy"
+                  >
+                {% elsif block.settings.logo_text != blank %}
+                  <span class="llch-logos__item-text">{{ block.settings.logo_text }}</span>
+                {% endif %}
+              </div>
+              <img
+                src="{{ 'separator.png' | asset_url }}"
+                class="llch-logos__separator"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              >
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Values -->
+    {% assign value_blocks = section.blocks | where: 'type', 'value' %}
+    {% if section.settings.values_title != blank or value_blocks.size > 0 %}
+      <div class="llch-values">
+        {% if section.settings.values_title != blank %}
+          <h2 class="llch-values__title">{{ section.settings.values_title }}</h2>
+        {% endif %}
+        {% if value_blocks.size > 0 %}
+          <div class="llch-values__grid">
+            {% for block in value_blocks %}
+              <div class="llch-value-card" {{ block.shopify_attributes }}>
+                <div class="llch-value-card__inner">
+                  <div class="llch-value-card__front">
+                    {% if block.settings.icon != blank %}
+                      <div class="llch-value-card__icon">{{ block.settings.icon }}</div>
+                    {% endif %}
+                    {% if block.settings.title != blank %}
+                      <p class="llch-value-card__title">{{ block.settings.title }}</p>
+                    {% endif %}
+                    {% if block.settings.text != blank %}
+                      <p class="llch-value-card__text">{{ block.settings.text }}</p>
+                    {% endif %}
+                  </div>
+                  <div class="llch-value-card__back">
+                    {% if block.settings.back_text != blank %}
+                      <p class="llch-value-card__back-text">{{ block.settings.back_text }}</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div id="contact"></div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LL Contact Hero",
+  "tag": "section",
+  "class": "llch-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Image de fond"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image_mobile",
+      "label": "Image de fond (mobile)",
+      "info": "Si vide, reprend l'image desktop"
+    },
+    {
+      "type": "select",
+      "id": "hero_image_position",
+      "label": "Position de l'image",
+      "options": [
+        { "value": "center center", "label": "Centre" },
+        { "value": "top center", "label": "Haut" },
+        { "value": "bottom center", "label": "Bas" },
+        { "value": "center left", "label": "Gauche" },
+        { "value": "center right", "label": "Droite" }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Opacité overlay sombre",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 45
+    },
+    {
+      "type": "header",
+      "content": "Étoiles"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stars",
+      "label": "Afficher les étoiles",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "star_count",
+      "label": "Nombre d'étoiles",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "stars_label",
+      "label": "Label étoiles (ex: Noté 4.6/5 · +1600 avis)",
+      "default": "Noté 4.6/5 · +1600 avis"
+    },
+    {
+      "type": "header",
+      "content": "Titre hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Titre",
+      "default": "Contactez-nous"
+    },
+    {
+      "type": "header",
+      "content": "CTA principal (coloré)"
+    },
+    {
+      "type": "text",
+      "id": "cta1_label",
+      "label": "Texte",
+      "default": "Prendre contact"
+    },
+    {
+      "type": "url",
+      "id": "cta1_url",
+      "label": "Lien"
+    },
+    {
+      "type": "color",
+      "id": "cta1_color",
+      "label": "Couleur fond",
+      "default": "#1a3fa0"
+    },
+    {
+      "type": "color",
+      "id": "cta1_text_color",
+      "label": "Couleur texte",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "CTA secondaire (blanc)"
+    },
+    {
+      "type": "text",
+      "id": "cta2_label",
+      "label": "Texte",
+      "default": "En savoir plus"
+    },
+    {
+      "type": "url",
+      "id": "cta2_url",
+      "label": "Lien"
+    },
+    {
+      "type": "header",
+      "content": "Texte sous le hero"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Texte",
+      "default": "<p>Décrivez votre offre en quelques mots percutants.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Bandeau logos"
+    },
+    {
+      "type": "text",
+      "id": "logos_clients",
+      "label": "Texte clients en dessous",
+      "default": "Seine Avenue / La Landing / ESSEC / Hanoi restaurant"
+    },
+    {
+      "type": "header",
+      "content": "Section valeurs"
+    },
+    {
+      "type": "text",
+      "id": "values_title",
+      "label": "Titre",
+      "default": "Pourquoi nous choisir"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo partenaire",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "logo_alt",
+          "label": "Texte alternatif"
+        },
+        {
+          "type": "text",
+          "id": "logo_text",
+          "label": "Texte (si pas d'image)"
+        },
+        {
+          "type": "url",
+          "id": "logo_url",
+          "label": "Lien (optionnel)"
+        }
+      ]
+    },
+    {
+      "type": "value",
+      "name": "Valeur",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Emoji / icône"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre",
+          "default": "Made in France"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Fabrication locale, qualité garantie."
+        },
+        {
+          "type": "textarea",
+          "id": "back_text",
+          "label": "Texte verso (au dos de la carte)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LL Contact Hero",
+      "blocks": [
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        {
+          "type": "value",
+          "settings": {
+            "icon": "✦",
+            "title": "Personnalisation",
+            "text": "Tout format de cahier, pochette, pour fourniture interne comme cadeau d'entreprise."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "icon": "🇫🇷",
+            "title": "Made in France",
+            "text": "Fabrication locale, circuits courts, qualité garantie."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "icon": "♻️",
+            "title": "Écologique & économique",
+            "text": "Matériaux durables, production responsable."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "icon": "🤝",
+            "title": "Association",
+            "text": "Un projet qui a du sens, ancré dans des valeurs humaines."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  document.querySelectorAll('.llch-value-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      card.classList.toggle('is-flipped');
+    });
+  });
+</script>

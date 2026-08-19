@@ -56,7 +56,7 @@
           "settings": {
             "image_desktop": "shopify://shop_images/Untitled_design_7.jpg",
             "image_mobile": "shopify://shop_images/foxlaude_hero_mobile.jpg",
-            "trustpilot_text": "4.5/5 - 118 étudiants conquis",
+            "trustpilot_text": "4.5/5 - 119 étudiants conquis",
             "trustpilot_rating": "4.5/5",
             "trustpilot_link": "",
             "title": "<p><strong>La liberté d'écrire. La liberté d'effacer.</strong></p><p></p>",
@@ -114,150 +114,10 @@
       ],
       "settings": {}
     },
-    "product-grid": {
+    "product_grid_hiVe6k": {
       "type": "product-grid",
       "blocks": {
-        "product_miQBCj": {
-          "type": "LL-product-grid-item",
-          "settings": {
-            "product": "le-duo-inseparable-cahier-bleu-stylo-ardoise"
-          },
-          "blocks": {
-            "static-product-card": {
-              "type": "_product-card",
-              "static": true,
-              "settings": {
-                "product_card_gap": 8
-              },
-              "blocks": {
-                "card-gallery": {
-                  "type": "_product-card-gallery",
-                  "settings": { "image_ratio": "portrait" }
-                },
-                "product-title": {
-                  "type": "product-title"
-                },
-                "price": {
-                  "type": "price"
-                }
-              },
-              "block_order": ["card-gallery", "product-title", "price"]
-            }
-          }
-        },
-        "product_qUB6a9": {
-          "type": "LL-product-grid-item",
-          "settings": {
-            "product": "le-cahier-foxlaude-beige-edition-limite"
-          },
-          "blocks": {
-            "static-product-card": {
-              "type": "_product-card",
-              "static": true,
-              "settings": {
-                "product_card_gap": 8
-              },
-              "blocks": {
-                "card-gallery": {
-                  "type": "_product-card-gallery",
-                  "settings": { "image_ratio": "portrait" }
-                },
-                "product-title": {
-                  "type": "product-title"
-                },
-                "price": {
-                  "type": "price"
-                }
-              },
-              "block_order": ["card-gallery", "product-title", "price"]
-            }
-          }
-        },
-        "product_HgDPkt": {
-          "type": "LL-product-grid-item",
-          "settings": {
-            "product": "le-duo-foxlaude-bleu-beige-1-stylo"
-          },
-          "blocks": {
-            "static-product-card": {
-              "type": "_product-card",
-              "static": true,
-              "settings": {
-                "product_card_gap": 8
-              },
-              "blocks": {
-                "card-gallery": {
-                  "type": "_product-card-gallery",
-                  "settings": { "image_ratio": "portrait" }
-                },
-                "product-title": {
-                  "type": "product-title"
-                },
-                "price": {
-                  "type": "price"
-                }
-              },
-              "block_order": ["card-gallery", "product-title", "price"]
-            }
-          }
-        },
-        "product_BifdkW": {
-          "type": "LL-product-grid-item",
-          "settings": {
-            "product": "cahier-foxlaude"
-          },
-          "blocks": {
-            "static-product-card": {
-              "type": "_product-card",
-              "static": true,
-              "settings": {
-                "product_card_gap": 8
-              },
-              "blocks": {
-                "card-gallery": {
-                  "type": "_product-card-gallery",
-                  "settings": { "image_ratio": "portrait" }
-                },
-                "product-title": {
-                  "type": "product-title"
-                },
-                "price": {
-                  "type": "price"
-                }
-              },
-              "block_order": ["card-gallery", "product-title", "price"]
-            }
-          }
-        },
-        "product_483qbr": {
-          "type": "LL-product-grid-item",
-          "settings": {
-            "product": "pack-de-3-stylos-ardoise-foxlaude"
-          },
-          "blocks": {
-            "static-product-card": {
-              "type": "_product-card",
-              "static": true,
-              "settings": {
-                "product_card_gap": 8
-              },
-              "blocks": {
-                "card-gallery": {
-                  "type": "_product-card-gallery",
-                  "settings": { "image_ratio": "portrait" }
-                },
-                "product-title": {
-                  "type": "product-title"
-                },
-                "price": {
-                  "type": "price"
-                }
-              },
-              "block_order": ["card-gallery", "product-title", "price"]
-            }
-          }
-        },
-        "product_CVtPF7": {
+        "ll_product_grid_item_dFUpgT": {
           "type": "LL-product-grid-item",
           "settings": {
             "product": "stylo-ardoise-foxlaude"
@@ -267,7 +127,17 @@
               "type": "_product-card",
               "static": true,
               "settings": {
-                "product_card_gap": 8
+                "product_card_gap": 16,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
               },
               "blocks": {
                 "card-gallery": {
@@ -283,17 +153,122 @@
               },
               "block_order": ["card-gallery", "product-title", "price"]
             }
-          }
+          },
+          "block_order": []
+        },
+        "ll_product_grid_item_9VzWbr": {
+          "type": "LL-product-grid-item",
+          "settings": {
+            "product": "le-duo-foxlaude-bleu-beige-1-stylo"
+          },
+          "blocks": {
+            "static-product-card": {
+              "type": "_product-card",
+              "static": true,
+              "settings": {
+                "product_card_gap": 16,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "card-gallery": {
+                  "type": "_product-card-gallery",
+                  "settings": { "image_ratio": "portrait" }
+                },
+                "product-title": {
+                  "type": "product-title"
+                },
+                "price": {
+                  "type": "price"
+                }
+              },
+              "block_order": ["card-gallery", "product-title", "price"]
+            }
+          },
+          "block_order": []
+        },
+        "ll_product_grid_item_Tpq8tk": {
+          "type": "LL-product-grid-item",
+          "settings": {
+            "product": "pack-de-3-stylos-ardoise-foxlaude"
+          },
+          "blocks": {
+            "static-product-card": {
+              "type": "_product-card",
+              "static": true,
+              "settings": {
+                "product_card_gap": 16,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "card-gallery": {
+                  "type": "_product-card-gallery",
+                  "settings": { "image_ratio": "portrait" }
+                },
+                "product-title": {
+                  "type": "product-title"
+                },
+                "price": {
+                  "type": "price"
+                }
+              },
+              "block_order": ["card-gallery", "product-title", "price"]
+            }
+          },
+          "block_order": []
+        },
+        "ll_product_grid_item_8Ew6Jg": {
+          "type": "LL-product-grid-item",
+          "settings": {
+            "product": "le-cahier-foxlaude-beige-edition-limite"
+          },
+          "blocks": {
+            "static-product-card": {
+              "type": "_product-card",
+              "static": true,
+              "settings": {
+                "product_card_gap": 16,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
         }
       },
       "block_order": [
-        "product_miQBCj",
-        "product_qUB6a9",
-        "product_HgDPkt",
-        "product_BifdkW",
-        "product_483qbr",
-        "product_CVtPF7"
+        "ll_product_grid_item_dFUpgT",
+        "ll_product_grid_item_9VzWbr",
+        "ll_product_grid_item_Tpq8tk",
+        "ll_product_grid_item_8Ew6Jg"
       ],
+      "name": "Product Grid",
       "settings": {
         "title": "Les essentiels FoxLaude"
       }
@@ -654,7 +629,7 @@
   "order": [
     "home-header",
     "home-banner",
-    "product-grid",
+    "product_grid_hiVe6k",
     "home-reels",
     "home-explain",
     "home-works",

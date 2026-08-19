@@ -11,7 +11,7 @@
     <h2 class="product-grid-title">{{ section.settings.title }}</h2>
   {% endif %}
 
-  <div class="product-grid-container{% if use_carousel %} product-grid-container--carousel{% endif %}">
+  <div class="ll-product-grid-container{% if use_carousel %} ll-product-grid-container--carousel{% endif %}">
     {% if use_carousel %}
       <button type="button" class="product-grid__arrow product-grid__arrow--prev" aria-label="Précédent" disabled>
         <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
@@ -20,7 +20,7 @@
         <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
       </button>
     {% endif %}
-    <div class="product-grid" id="product-grid-{{ section.id }}">
+    <div class="ll-product-grid" id="product-grid-{{ section.id }}">
       {% content_for 'blocks' %}
     </div>
   </div>
@@ -40,23 +40,23 @@
     color: #000;
   }
 
-  .product-grid-container {
+  .ll-product-grid-container {
     position: relative;
     min-width: 0;
   }
 
-  .product-grid {
+  .ll-product-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
   }
 
-  .product-grid .resource-list__item {
+  .ll-product-grid .resource-list__item {
     height: 100%;
   }
 
   /* Carousel mode (> 4 products) */
-  .product-grid-container--carousel .product-grid {
+  .ll-product-grid-container--carousel .ll-product-grid {
     display: flex;
     width: 100%;
     min-width: 0;
@@ -70,20 +70,20 @@
     user-select: none;
   }
 
-  .product-grid-container--carousel .product-grid::-webkit-scrollbar {
+  .ll-product-grid-container--carousel .ll-product-grid::-webkit-scrollbar {
     display: none;
   }
 
-  .product-grid-container--carousel .product-grid.dragging {
+  .ll-product-grid-container--carousel .ll-product-grid.dragging {
     cursor: grabbing;
     scroll-snap-type: none;
   }
 
-  .product-grid-container--carousel .product-grid.dragging .resource-list__item {
+  .ll-product-grid-container--carousel .ll-product-grid.dragging .resource-list__item {
     pointer-events: none;
   }
 
-  .product-grid-container--carousel .product-grid .resource-list__item {
+  .ll-product-grid-container--carousel .ll-product-grid .resource-list__item {
     flex: 0 0 calc(25% - 18px);
     min-width: 260px;
     scroll-snap-align: start;
@@ -150,7 +150,7 @@
       margin-bottom: 24px;
     }
 
-    .product-grid-container {
+    .ll-product-grid-container {
       overflow-x: auto;
       overflow-y: hidden;
       -webkit-overflow-scrolling: touch;
@@ -159,15 +159,15 @@
       padding: 0 20px;
     }
 
-    .product-grid-container::-webkit-scrollbar {
+    .ll-product-grid-container::-webkit-scrollbar {
       display: none;
     }
 
-    .product-grid-container--carousel .product-grid__arrow {
+    .ll-product-grid-container--carousel .product-grid__arrow {
       display: none;
     }
 
-    .product-grid {
+    .ll-product-grid {
       display: flex;
       gap: 16px;
       scroll-snap-type: x mandatory;
@@ -176,17 +176,17 @@
       padding-bottom: 10px;
     }
 
-    .product-grid.dragging {
+    .ll-product-grid.dragging {
       cursor: grabbing;
       scroll-snap-type: none;
     }
 
-    .product-grid.dragging .resource-list__item {
+    .ll-product-grid.dragging .resource-list__item {
       pointer-events: none;
     }
 
-    .product-grid .resource-list__item,
-    .product-grid-container--carousel .product-grid .resource-list__item {
+    .ll-product-grid .resource-list__item,
+    .ll-product-grid-container--carousel .ll-product-grid .resource-list__item {
       flex: 0 0 calc(85vw - 40px);
       max-width: 320px;
       scroll-snap-align: start;
@@ -195,12 +195,12 @@
 
   /* Tablet */
   @media (min-width: 769px) and (max-width: 1024px) {
-    .product-grid-container:not(.product-grid-container--carousel) .product-grid {
+    .ll-product-grid-container:not(.ll-product-grid-container--carousel) .ll-product-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
 
-    .product-grid-container--carousel .product-grid .resource-list__item {
+    .ll-product-grid-container--carousel .ll-product-grid .resource-list__item {
       flex-basis: calc(50% - 10px);
     }
 
@@ -211,11 +211,11 @@
 
   /* Petits écrans desktop */
   @media (min-width: 1025px) and (max-width: 1200px) {
-    .product-grid-container:not(.product-grid-container--carousel) .product-grid {
+    .ll-product-grid-container:not(.ll-product-grid-container--carousel) .ll-product-grid {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    .product-grid-container--carousel .product-grid .resource-list__item {
+    .ll-product-grid-container--carousel .ll-product-grid .resource-list__item {
       flex-basis: calc(33.333% - 16px);
     }
   }
@@ -224,11 +224,11 @@
 <script>
   (() => {
     const section = document.querySelector('[data-section-id="{{ section.id }}"]');
-    const container = section.querySelector('.product-grid-container');
-    const grid = section.querySelector('.product-grid');
+    const container = section.querySelector('.ll-product-grid-container');
+    const grid = section.querySelector('.ll-product-grid');
     if (!grid) return;
 
-    const isCarousel = container.classList.contains('product-grid-container--carousel');
+    const isCarousel = container.classList.contains('ll-product-grid-container--carousel');
     const prevBtn = section.querySelector('.product-grid__arrow--prev');
     const nextBtn = section.querySelector('.product-grid__arrow--next');
 

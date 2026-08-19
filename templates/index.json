@@ -118,7 +118,7 @@
       "type": "product-grid",
       "blocks": {
         "ll_product_grid_item_VhArYt": {
-          "type": "LL-product-grid-item",
+          "type": "ll-product-grid-item",
           "settings": {
             "product": "cahier-test"
           },
@@ -230,7 +230,7 @@
           "block_order": []
         },
         "ll_product_grid_item_iaj7Ni": {
-          "type": "LL-product-grid-item",
+          "type": "ll-product-grid-item",
           "settings": {
             "product": "cahier-foxlaude"
           },
@@ -303,7 +303,7 @@
           "block_order": []
         },
         "ll_product_grid_item_dtUU3z": {
-          "type": "LL-product-grid-item",
+          "type": "ll-product-grid-item",
           "settings": {
             "product": ""
           },
@@ -330,7 +330,7 @@
           "block_order": []
         },
         "ll_product_grid_item_Eyq3j4": {
-          "type": "LL-product-grid-item",
+          "type": "ll-product-grid-item",
           "settings": {
             "product": ""
           },

@@ -114,13 +114,13 @@
       ],
       "settings": {}
     },
-    "product_grid_hiVe6k": {
+    "product_grid_4KkfTq": {
       "type": "product-grid",
       "blocks": {
-        "ll_product_grid_item_dFUpgT": {
+        "ll_product_grid_item_VhArYt": {
           "type": "LL-product-grid-item",
           "settings": {
-            "product": "stylo-ardoise-foxlaude"
+            "product": "cahier-test"
           },
           "blocks": {
             "static-product-card": {
@@ -140,26 +140,99 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "card-gallery": {
+                "product_card_gallery_9mAEFJ": {
                   "type": "_product-card-gallery",
-                  "settings": { "image_ratio": "portrait" }
+                  "name": "t:names.product_card_media",
+                  "settings": {
+                    "image_ratio": "portrait",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
                 },
-                "product-title": {
-                  "type": "product-title"
+                "product_title_WePkcc": {
+                  "type": "product-title",
+                  "name": "t:names.title",
+                  "settings": {
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
                 },
-                "price": {
-                  "type": "price"
+                "buy_buttons_T8UUUG": {
+                  "type": "buy-buttons",
+                  "name": "t:names.product_buy_buttons",
+                  "settings": {
+                    "stacking": false,
+                    "show_pickup_availability": true,
+                    "gift_card_form": true,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "quantity": {
+                      "type": "quantity",
+                      "disabled": true,
+                      "static": true,
+                      "settings": {},
+                      "blocks": {}
+                    },
+                    "add-to-cart": {
+                      "type": "add-to-cart",
+                      "disabled": true,
+                      "static": true,
+                      "settings": {
+                        "style_class": "button-secondary"
+                      },
+                      "blocks": {}
+                    },
+                    "accelerated-checkout": {
+                      "type": "accelerated-checkout",
+                      "static": true,
+                      "settings": {},
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": []
                 }
               },
-              "block_order": ["card-gallery", "product-title", "price"]
+              "block_order": [
+                "product_card_gallery_9mAEFJ",
+                "product_title_WePkcc",
+                "buy_buttons_T8UUUG"
+              ]
             }
           },
           "block_order": []
         },
-        "ll_product_grid_item_9VzWbr": {
+        "ll_product_grid_item_iaj7Ni": {
           "type": "LL-product-grid-item",
           "settings": {
-            "product": "le-duo-foxlaude-bleu-beige-1-stylo"
+            "product": "cahier-foxlaude"
           },
           "blocks": {
             "static-product-card": {
@@ -179,26 +252,60 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "card-gallery": {
+                "product_card_gallery_37KXcp": {
                   "type": "_product-card-gallery",
-                  "settings": { "image_ratio": "portrait" }
+                  "name": "t:names.product_card_media",
+                  "settings": {
+                    "image_ratio": "portrait",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
                 },
-                "product-title": {
-                  "type": "product-title"
-                },
-                "price": {
-                  "type": "price"
+                "product_title_rqqdna": {
+                  "type": "product-title",
+                  "name": "t:names.title",
+                  "settings": {
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
                 }
               },
-              "block_order": ["card-gallery", "product-title", "price"]
+              "block_order": [
+                "product_card_gallery_37KXcp",
+                "product_title_rqqdna"
+              ]
             }
           },
           "block_order": []
         },
-        "ll_product_grid_item_Tpq8tk": {
+        "ll_product_grid_item_dtUU3z": {
           "type": "LL-product-grid-item",
           "settings": {
-            "product": "pack-de-3-stylos-ardoise-foxlaude"
+            "product": ""
           },
           "blocks": {
             "static-product-card": {
@@ -217,27 +324,15 @@
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
-              "blocks": {
-                "card-gallery": {
-                  "type": "_product-card-gallery",
-                  "settings": { "image_ratio": "portrait" }
-                },
-                "product-title": {
-                  "type": "product-title"
-                },
-                "price": {
-                  "type": "price"
-                }
-              },
-              "block_order": ["card-gallery", "product-title", "price"]
+              "blocks": {}
             }
           },
           "block_order": []
         },
-        "ll_product_grid_item_8Ew6Jg": {
+        "ll_product_grid_item_Eyq3j4": {
           "type": "LL-product-grid-item",
           "settings": {
-            "product": "le-cahier-foxlaude-beige-edition-limite"
+            "product": ""
           },
           "blocks": {
             "static-product-card": {
@@ -256,29 +351,17 @@
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
-              "blocks": {
-                "card-gallery": {
-                  "type": "_product-card-gallery",
-                  "settings": { "image_ratio": "portrait" }
-                },
-                "product-title": {
-                  "type": "product-title"
-                },
-                "price": {
-                  "type": "price"
-                }
-              },
-              "block_order": ["card-gallery", "product-title", "price"]
+              "blocks": {}
             }
           },
           "block_order": []
         }
       },
       "block_order": [
-        "ll_product_grid_item_dFUpgT",
-        "ll_product_grid_item_9VzWbr",
-        "ll_product_grid_item_Tpq8tk",
-        "ll_product_grid_item_8Ew6Jg"
+        "ll_product_grid_item_VhArYt",
+        "ll_product_grid_item_iaj7Ni",
+        "ll_product_grid_item_dtUU3z",
+        "ll_product_grid_item_Eyq3j4"
       ],
       "name": "Product Grid",
       "settings": {
@@ -641,7 +724,7 @@
   "order": [
     "home-header",
     "home-banner",
-    "product_grid_hiVe6k",
+    "product_grid_4KkfTq",
     "home-reels",
     "home-explain",
     "home-works",

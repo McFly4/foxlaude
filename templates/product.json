@@ -69,13 +69,13 @@
           },
           "blocks": {
             "ll_header": {
-              "type": "LL-product-header",
+              "type": "ll-product-header",
               "name": "LL En-tête produit",
               "settings": {},
               "blocks": {}
             },
             "ll_rating": {
-              "type": "LL-product-rating",
+              "type": "ll-product-rating",
               "name": "LL Avis produit",
               "settings": {},
               "blocks": {}
@@ -119,7 +119,7 @@
               "blocks": {}
             },
             "ll_benefits": {
-              "type": "LL-product-benefits",
+              "type": "ll-product-benefits",
               "name": "LL Bénéfices produit",
               "settings": {},
               "blocks": {}
@@ -138,7 +138,7 @@
               "blocks": {}
             },
             "ll_complete_purchase": {
-              "type": "LL-complete-purchase",
+              "type": "ll-complete-purchase",
               "name": "LL Complétez votre achat",
               "settings": {
                 "heading": "Complétez votre achat avec le :"
@@ -181,15 +181,15 @@
               "block_order": []
             },
             "ll_shipping": {
-              "type": "LL-shipping-info",
+              "type": "ll-shipping-info",
               "name": "LL Livraison",
               "settings": {
-                "text": "Livraison en 2-3 jours"
+                "text": "Livraison en 7 jours"
               },
               "blocks": {}
             },
             "ll_accordion": {
-              "type": "LL-product-accordion",
+              "type": "ll-product-accordion",
               "name": "LL Accordéon produit",
               "settings": {},
               "blocks": {}
@@ -219,6 +219,56 @@
         "color_scheme": "scheme-1",
         "padding-block-start": 18,
         "padding-block-end": 0
+      }
+    },
+    "before_after": {
+      "type": "LL-before-after",
+      "blocks": {
+        "comparison_slider": {
+          "type": "comparison-slider",
+          "settings": {
+            "slider_style": "horizontal",
+            "show_text": false,
+            "before_text": "",
+            "after_text": "",
+            "text_preset": "",
+            "text_position_horizontal": "start",
+            "text_position_vertical": "start",
+            "text_background": false,
+            "text_background_color": "#ffffff",
+            "text_corner_radius": 0,
+            "image_ratio": "landscape",
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 12,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "comparison_slider"
+      ],
+      "name": "LL Avant / Après",
+      "settings": {
+        "title": "Avant Foxlaude vs Après Foxlaude",
+        "before_text": "",
+        "after_text": "",
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     },
     "product_recommendations_qggXJq": {
@@ -488,46 +538,6 @@
       "settings": {
         "image": "shopify://shop_images/FoxLaudeRectangle_1.png",
         "title": "Une ardoise, mille questions"
-      }
-    },
-    "before_after": {
-      "type": "LL-before-after",
-      "name": "LL Avant / Après",
-      "blocks": {
-        "comparison_slider": {
-          "type": "comparison-slider",
-          "settings": {
-            "slider_style": "horizontal",
-            "show_text": false,
-            "image_ratio": "landscape",
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 12,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": ["comparison_slider"],
-      "settings": {
-        "title": "Avant Foxlaude vs Après Foxlaude",
-        "before_text": "",
-        "after_text": "",
-        "section_width": "page-width",
-        "color_scheme": "scheme-1",
-        "padding-block-start": 48,
-        "padding-block-end": 48
       }
     }
   },

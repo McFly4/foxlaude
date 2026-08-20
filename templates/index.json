@@ -56,11 +56,11 @@
           "settings": {
             "image_desktop": "shopify://shop_images/Untitled_design_7.jpg",
             "image_mobile": "shopify://shop_images/foxlaude_hero_mobile.jpg",
-            "trustpilot_text": "4.5/5 - 123 étudiants conquis",
+            "trustpilot_text": "4.5/5 - 243 étudiants conquis",
             "trustpilot_rating": "4.5/5",
             "trustpilot_link": "",
-            "title": "<p><strong>La liberté d'écrire. La liberté d'effacer.</strong></p><p></p>",
-            "description": "<p>Car votre sac n'a plus besoin de brouillons qui s'accumulent</p><p>FoxLaude réinvente le cahier en intégrant une ardoise à sa couverture pour vos idées, calculs, schémas...</p><p>Et si quelque chose mérite d'être gardé, notez-le sur papier ou scannez-le en un instant</p>",
+            "title": "<p>On ne réinvente pas le cahier. On réinvente l’ardoise.</p>",
+            "description": "<p>Le cahier existe depuis des siècles. Pourquoi le changer ?</p><p>Chez FoxLaude, on a gardé ce qui marche : de vraies pages blanches.<br/><br/>Et on a réinventé l’ardoise : <strong>plus fine, plus belle, scannable, avec un stylo à mine fine ultra agréable.</strong></p>",
             "cta_text": "Je veux mon FoxLaude",
             "cta_link": "shopify://products/le-duo-inseparable-cahier-bleu-stylo-ardoise"
           }

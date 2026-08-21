@@ -199,7 +199,10 @@
 
       {%- assign social_blocks = section.blocks | where: 'type', 'social_icon' -%}
       {% if social_blocks.size > 0 %}
-        <div class="footer-social-bar" style="--social-icon-size: {{ section.settings.social_icon_size }}px; --social-pill-color: {{ section.settings.social_pill_color }};">
+        <div
+          class="footer-social-bar"
+          style="--social-icon-size: {{ section.settings.social_icon_size }}px; --social-pill-color: {{ section.settings.social_pill_color }};"
+        >
           {% for block in social_blocks %}
             <a
               class="footer-social-bar__item"
@@ -228,11 +231,7 @@
                 <a href="{{ block.settings.link }}" target="_blank" rel="noopener noreferrer">
               {% endif %}
               {% if block.settings.image != blank %}
-                {{
-                  block.settings.image
-                  | image_url: width: 1000
-                  | image_tag: loading: 'lazy', widths: '200, 300, 400', sizes: '500px'
-                }}
+                {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '500px' }}
               {% else %}
                 {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
               {% endif %}

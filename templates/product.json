@@ -96,7 +96,7 @@
               "type": "text",
               "name": "Product description",
               "settings": {
-                "text": "{{ closest.product.description }}",
+                "text": "<p>Le cahier pour tes cours et tes notes. L’ardoise intégrée à la couverture pour tout ce qui doit être testé, corrigé puis effacé. Le stylo-ardoise à mine fine, ultra satisfaisant, complète le tout avec son effaceur intégré.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",

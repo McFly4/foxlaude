@@ -151,16 +151,7 @@
     }
 
     .ll-product-grid-container {
-      overflow-x: auto;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
       padding: 0 20px;
-    }
-
-    .ll-product-grid-container::-webkit-scrollbar {
-      display: none;
     }
 
     .ll-product-grid-container--carousel .product-grid__arrow {
@@ -170,10 +161,18 @@
     .ll-product-grid {
       display: flex;
       gap: 16px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       scroll-snap-type: x mandatory;
       cursor: grab;
       user-select: none;
       padding-bottom: 10px;
+    }
+
+    .ll-product-grid::-webkit-scrollbar {
+      display: none;
     }
 
     .ll-product-grid.dragging {

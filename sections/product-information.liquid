@@ -362,10 +362,11 @@
   @media screen and (min-width: 750px) {
     .product-information__grid--half.product-information--media-left,
     .product-information__grid--half.product-information--media-left:has(.media-gallery--extend) {
+      --full-page-grid-central-column-width: min(1440px - var(--page-margin) * 2, 100% - var(--page-margin) * 2);
       grid-template-columns:
         var(--full-page-grid-margin)
-        calc(var(--full-page-grid-central-column-width) * 0.6)
-        calc(var(--full-page-grid-central-column-width) * 0.4)
+        calc(var(--full-page-grid-central-column-width) * 0.5)
+        calc(var(--full-page-grid-central-column-width) * 0.5)
         var(--full-page-grid-margin) !important;
     }
 

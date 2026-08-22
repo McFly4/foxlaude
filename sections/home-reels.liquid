@@ -10,6 +10,17 @@
     cursor: pointer;
   }
 
+  .video-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: 8px;
+    background-color: #000;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
   .video-card video,
   .video-card .video-poster {
     width: 100%;
@@ -23,16 +34,15 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 1;
   }
 
   .video-card video {
     position: relative;
-    opacity: 0;
-    transition: opacity 0.2s ease;
   }
 
-  .video-card video.is-ready {
-    opacity: 1;
+  .video-card .video-poster.is-hidden {
+    display: none;
   }
 
   .video-info {
@@ -70,6 +80,7 @@
     font-weight: 400;
     font-family: 'ABC Diatype', sans-serif !important;
     padding: 5px 10px;
+    z-index: 3;
   }
 
   .modal-video {
@@ -84,21 +95,27 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     z-index: 10;
+    pointer-events: none;
+  }
+
+  .play-btn svg {
+    width: 24px;
+    height: 24px;
   }
 
   .video-container {
     position: relative;
     width: 320px;
     min-width: 320px;
-  }
-
-  .video-container:hover .play-btn {
-    display: none;
   }
 
   .section-shopify-title {
@@ -190,7 +207,9 @@
     justify-content: center;
     cursor: pointer;
     color: #18466d;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
   }
 
   .product-grid__arrow:hover {
@@ -321,7 +340,8 @@
       margin: 0;
     }
 
-    .video-card video {
+    .video-card video,
+    .video-card .video-poster {
       width: 100%;
       height: 480px;
     }
@@ -362,26 +382,9 @@
             {{ block.shopify_attributes }}
           >
             <div class="video-container">
-              <!-- PLAY -->
-
-              <div class="play-btn">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm14.024-.983a1.125 1.125 0 0 1 0 1.966l-5.603 3.113A1.125 1.125 0 0 1 9 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113Z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </div>
-
               <!-- VIDEO -->
 
-              <div class="video-card">
+              <div class="video-card" data-video-src="{{ video.sources.last.url }}">
                 {% if poster != blank %}
                   <img
                     class="video-poster"
@@ -405,6 +408,23 @@
                     class: 'lazy-reel-video',
                     image_size: '400x'
                 }}
+
+                <!-- PLAY -->
+
+                <div class="play-btn">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm14.024-.983a1.125 1.125 0 0 1 0 1.966l-5.603 3.113A1.125 1.125 0 0 1 9 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113Z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
 
                 <a href="{{ block.settings.cta_link }}">
                   <div class="video-card-buy-btn">
@@ -486,58 +506,13 @@
     <video
       class="modal-video"
       id="modal-video"
-      autoplay
       loop
       style="
         width:100%;
         border-radius:10px;
       "
-      muted
       playsinline
     ></video>
-
-    <!-- SOUND -->
-
-    <button
-      id="toggle-sound"
-      style="
-        position:absolute;
-        top:20px;
-        left:20px;
-        cursor:pointer;
-        background:none;
-        border:none;
-      "
-    >
-      <span class="icon-muted">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="white"
-          width="32"
-          height="32"
-        >
-          <path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 0 0 1.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06ZM17.78 9.22a.75.75 0 1 0-1.06 1.06L18.44 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06l1.72-1.72 1.72 1.72a.75.75 0 1 0 1.06-1.06L20.56 12l1.72-1.72a.75.75 0 0 0-1.06-1.06l-1.72 1.72-1.72-1.72Z"></path>
-        </svg>
-      </span>
-
-      <span
-        class="icon-unmuted"
-        style="display:none;"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="white"
-          width="32"
-          height="32"
-        >
-          <path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 0 0 1.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 9.98 0 13.788a.75.75 0 0 1-1.06-1.06 8.25 8.25 0 0 0 0-11.668.75.75 0 0 1 0-1.06Z"></path>
-
-          <path d="M15.932 7.757a.75.75 0 0 1 1.061 0 6 6 0 0 1 0 8.486.75.75 0 0 1-1.06-1.061 4.5 4.5 0 0 0 0-6.364.75.75 0 0 1 0-1.06Z"></path>
-        </svg>
-      </span>
-    </button>
 
     <!-- CLOSE -->
 
@@ -763,88 +738,10 @@
     });
 
     /* =========================
-       MODALE
-    ========================= */
-
-    const modal = document.getElementById('video-modal');
-
-    const modalVideo = document.getElementById('modal-video');
-
-    const toggleSoundBtn = document.getElementById('toggle-sound');
-
-    const closeModalBtn = document.getElementById('close-modal');
-
-    document.querySelectorAll('.video-card').forEach((card) => {
-      card.addEventListener('click', () => {
-        const video = card.querySelector('video');
-
-        const src = video.currentSrc || video.querySelector('source')?.src;
-
-        if (!src) return;
-
-        modal.style.display = 'flex';
-
-        modalVideo.src = src;
-
-        modalVideo.muted = true;
-
-        modalVideo.play();
-
-        toggleSoundBtn.querySelector('.icon-muted').style.display = 'inline';
-
-        toggleSoundBtn.querySelector('.icon-unmuted').style.display = 'none';
-      });
-    });
-
-    /* =========================
-       SON
-    ========================= */
-
-    toggleSoundBtn.addEventListener('click', () => {
-      modalVideo.muted = !modalVideo.muted;
-
-      const iconMuted = toggleSoundBtn.querySelector('.icon-muted');
-
-      const iconUnmuted = toggleSoundBtn.querySelector('.icon-unmuted');
-
-      if (modalVideo.muted) {
-        iconMuted.style.display = 'inline';
-
-        iconUnmuted.style.display = 'none';
-      } else {
-        iconMuted.style.display = 'none';
-
-        iconUnmuted.style.display = 'inline';
-      }
-    });
-
-    /* =========================
-       FERMETURE MODALE
-    ========================= */
-
-    closeModalBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
-
-      modalVideo.pause();
-
-      modalVideo.src = '';
-    });
-
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        modal.style.display = 'none';
-
-        modalVideo.pause();
-
-        modalVideo.src = '';
-      }
-    });
-
-    /* =========================
-       LAZY LOAD + AUTOPLAY
-       Charge la vidéo seulement
-       à l'approche du viewport,
-       ne joue que celle visible.
+       LAZY LOAD + AUTOPLAY FOND
+       Charge la vidéo à l'approche
+       du viewport, la joue en muet
+       en fond dès qu'elle est visible.
     ========================= */
 
     const allVideos = Array.from(document.querySelectorAll('.video-card video'));
@@ -886,7 +783,9 @@
       video.muted = true;
 
       video.addEventListener('canplay', () => {
-        video.classList.add('is-ready');
+        const poster = video.closest('.video-card').querySelector('.video-poster');
+
+        if (poster) poster.classList.add('is-hidden');
       });
 
       loadObserver.observe(video);
@@ -894,40 +793,55 @@
     });
 
     /* =========================
-       HOVER (DESKTOP)
+       MODALE
     ========================= */
 
-    allVideos.forEach((video, i) => {
-      const container = video.closest('.video-container');
+    const modal = document.getElementById('video-modal');
 
-      const playBtn = container.querySelector('.play-btn');
+    const modalVideo = document.getElementById('modal-video');
 
-      container.addEventListener('mouseenter', () => {
-        if (!isDesktop()) return;
+    const closeModalBtn = document.getElementById('close-modal');
 
-        allVideos.forEach((v, vi) => {
-          if (vi !== i) {
-            v.pause();
-          }
-        });
+    document.querySelectorAll('.video-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        const video = card.querySelector('video');
 
-        if (playBtn) {
-          playBtn.style.display = 'none';
-        }
+        const src = video.currentSrc || video.querySelector('source')?.src || card.dataset.videoSrc;
 
-        loadVideoSrc(video);
-        video.play().catch(() => {});
-      });
-
-      container.addEventListener('mouseleave', () => {
-        if (!isDesktop()) return;
-
-        if (playBtn) {
-          playBtn.style.display = 'block';
-        }
+        if (!src) return;
 
         video.pause();
+
+        modal.style.display = 'flex';
+
+        modalVideo.src = src;
+
+        modalVideo.muted = false;
+
+        modalVideo.play();
       });
+    });
+
+    /* =========================
+       FERMETURE MODALE
+    ========================= */
+
+    closeModalBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+
+      modalVideo.pause();
+
+      modalVideo.src = '';
+    });
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+
+        modalVideo.pause();
+
+        modalVideo.src = '';
+      }
     });
   });
 </script>

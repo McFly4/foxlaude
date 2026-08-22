@@ -77,6 +77,7 @@
             "ll_rating": {
               "type": "ll-product-rating",
               "name": "LL Avis produit",
+              "disabled": true,
               "settings": {},
               "blocks": {}
             },
@@ -96,7 +97,7 @@
               "type": "text",
               "name": "Product description",
               "settings": {
-                "text": "{{ closest.product.description }}",
+                "text": "<p>Une trousse simple, belle et pratique pour garder vos stylos FoxLaude et vos essentiels toujours avec vous, elle est pensée pour accompagner vos cahiers au quotidien.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -120,7 +121,7 @@
             },
             "ll_benefits": {
               "type": "ll-product-benefits",
-              "name": "LL Bénéfices produit",
+              "name": "Bénéfices produit",
               "settings": {},
               "blocks": {}
             },
@@ -227,6 +228,8 @@
         "comparison_slider": {
           "type": "comparison-slider",
           "settings": {
+            "before_image": "shopify://shop_images/avant_sac_foxlaude.png",
+            "after_image": "shopify://shop_images/sac_range_foxlaude.png",
             "slider_style": "horizontal",
             "show_text": false,
             "before_text": "",
@@ -464,63 +467,49 @@
           "type": "faq_item",
           "settings": {
             "question": "Comment fonctionne l'ardoise FoxLaude ?",
-            "answer": "<p>Voici la réponse à votre question.</p>"
+            "answer": "<p>L’ardoise FoxLaude est intégrée directement dans la couverture du cahier. Écrivez dessus avec un stylo ardoise, scannez ce que vous souhaitez garder, puis effacez et recommencez.</p>"
           }
         },
         "faq_item_NXxUdw": {
           "type": "faq_item",
           "settings": {
-            "question": "L'ardoise est-elle vraiment réutilisable à l'infini ?",
-            "answer": "<p>Voici la réponse à votre question.</p>"
+            "question": "L’ardoise est-elle vraiment réutilisable à l’infini ?",
+            "answer": "<p>Oui. L’ardoise est conçue pour être utilisée encore et encore. Vous pouvez écrire, effacer et recommencer autant de fois que nécessaire. Pour la garder propre au quotidien, un chiffon doux légèrement humide peut être utilisé si nécessaire.</p>"
           }
         },
         "faq_item_rcKDxg": {
           "type": "faq_item",
           "settings": {
             "question": "Avec quels stylos puis-je écrire sur FoxLaude ?",
-            "answer": "<p>Voici la réponse à votre question.</p>"
+            "answer": "<p>Nous vous conseillons les stylos ardoise FoxLaude. Leur mine fine est spécialement pensée pour écrire sur l’ardoise sans la salir. Mais tous les stylos ardoise fonctionnent sur le cahier FoxLaude.</p>"
           }
         },
         "faq_item_zJ6Wmp": {
           "type": "faq_item",
           "settings": {
             "question": "Comment scanner mes notes ?",
-            "answer": "<p>Voici la réponse à votre question.</p>"
+            "answer": "<p>Ouvrez l’application <strong>Notes</strong> de votre téléphone, créez une nouvelle note et sélectionnez <strong>Scanner</strong>. Votre téléphone reconnaît automatiquement les repères présents sur l’ardoise et cadre votre note.</p>"
           }
         },
         "faq_item_DN9tKq": {
           "type": "faq_item",
           "settings": {
             "question": "FoxLaude remplace-t-il complétement le papier ?",
-            "answer": "<p>Voici la réponse à votre question.</p>"
-          }
-        },
-        "faq_item_Ffynjf": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Quelle est la différence entre le cahier A4 et la pochette ?",
-            "answer": "<p>Voici la réponse à votre question.</p>"
+            "answer": "<p>Non, et ce n’est pas le but. Les pages sont faites pour garder vos cours et vos notes. L’ardoise sert pour tout ce qui doit être testé, corrigé, scanné puis effacé.</p>"
           }
         },
         "faq_item_g4nkEz": {
           "type": "faq_item",
           "settings": {
             "question": "Est-ce vraiment écologique ?",
-            "answer": "<p>Voici la réponse à votre question.</p>"
+            "answer": "<p>FoxLaude permet de réutiliser la même surface pour les brouillons, les calculs et les fiches, au lieu d’utiliser une nouvelle feuille à chaque fois. Le papier du cahier est également certifié <strong>FSC et PEFC</strong>.</p>"
           }
         },
         "faq_item_aemcYa": {
           "type": "faq_item",
           "settings": {
             "question": "Livrez-vous partout en France ?",
-            "answer": "<p>Voici la réponse à votre question.</p>"
-          }
-        },
-        "faq_item_WqYHmY": {
-          "type": "faq_item",
-          "settings": {
-            "question": "FoxLaude est-il adapté pour les lycéens et collégiens ?",
-            "answer": "<p>Voici la réponse à votre question.</p>"
+            "answer": "<p>Oui, FoxLaude livre partout en France.</p>"
           }
         }
       },
@@ -530,10 +519,8 @@
         "faq_item_rcKDxg",
         "faq_item_zJ6Wmp",
         "faq_item_DN9tKq",
-        "faq_item_Ffynjf",
         "faq_item_g4nkEz",
-        "faq_item_aemcYa",
-        "faq_item_WqYHmY"
+        "faq_item_aemcYa"
       ],
       "settings": {
         "image": "shopify://shop_images/FoxLaudeRectangle_1.png",
